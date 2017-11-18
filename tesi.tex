@@ -36,6 +36,13 @@
 
 %\usepackage{amsmath,amssymb,amsthm}    % matematica
 
+\usepackage[a4paper,                    % carta A4
+            top=3cm,                    % margine superiore
+            bottom=3cm,                 % margine inferiore
+            head=30pt                   % altezza degli header
+            ]{geometry}                 
+
+
 \usepackage[english, italian]{babel}    % per scrivere in italiano e in inglese;
                                         % l'ultima lingua (l'italiano) risulta predefinita
 
@@ -43,7 +50,9 @@
 
 \usepackage{caption}                    % didascalie
 
-\usepackage{chngpage,calc}              % centra il frontespizio
+%\usepackage{chngpage,calc}              % centra il frontespizio
+
+\usepackage{fancyhdr}                   % Gestisce gli header
 
 \usepackage{csquotes}                   % gestisce automaticamente i caratteri (")
 
@@ -66,7 +75,7 @@
 
 \usepackage[binding=5mm]{layaureo}      % margini ottimizzati per l'A4; rilegatura di 5 mm
 
-\usepackage{listings}                   % codici
+\usepackage{listings}                   % codice
 
 \usepackage{microtype}                  % microtipografia
 
@@ -135,7 +144,7 @@
 %**************************************************************
 % Materiale finale
 %**************************************************************
-\backmatter
-\printglossaries
-\input{inizio-fine/bibliografia}
+%\backmatter
+%\printglossaries
+%\input{inizio-fine/bibliografia}
 \end{document}

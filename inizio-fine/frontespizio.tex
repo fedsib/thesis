@@ -1,74 +1,80 @@
-% !TEX encoding = UTF-8
-% !TEX TS-program = pdflatex
-% !TEX root = ../tesi.tex
-
-%**************************************************************
-% Frontespizio 
-%**************************************************************
 \begin{titlepage}
-
-\begin{center}
-
-\begin{LARGE}
-\textbf{\myUni}\\
-\end{LARGE}
-
-\vspace{10pt}
-
-\begin{Large}
-\textsc{\myDepartment}\\
-\end{Large}
-
-\vspace{10pt}
-
-\begin{large}
-\textsc{\myFaculty}\\
-\end{large}
-
-\vspace{30pt}
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[height=6cm]{logo-unipd}
-\end{center}
-\end{figure}
-\vspace{30pt} 
-
-\begin{LARGE}
-\begin{center}
-\textbf{\myTitle}\\
-\end{center}
-\end{LARGE}
-
-\vspace{10pt} 
-
-\begin{large}
-\textsl{\myDegree}\\
-\end{large}
-
-\vspace{40pt} 
-
-\begin{large}
-\begin{flushleft}
-\textit{Relatore}\\ 
-\vspace{5pt} 
-\profTitle \myProf
-\end{flushleft}
-
-\vspace{0pt} 
-
-\begin{flushright}
-\textit{Laureando}\\ 
-\vspace{5pt} 
-\myName
-\end{flushright}
-\end{large}
-
-\vspace{40pt}
-
-\line(1, 0){338} \\
-\begin{normalsize}
-\textsc{Anno Accademico \myAA}
-\end{normalsize}
-
-\end{center}
-\end{titlepage} 
+    
+    % Defines a new command for the horizontal lines, change thickness here
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+    
+    % Center everything
+    \center
+    
+    %----------------------------------------------------------------------------------------
+    %	HEADING SECTIONS
+    %----------------------------------------------------------------------------------------
+    
+    % Name of your university/college
+    
+    \begin{LARGE}
+        \textsc{\textbf{\myUni}}\\[1cm] 
+    \end{LARGE}
+    
+    %----------------------------------------------------------------------------------------
+    %	LOGO SECTION
+    %----------------------------------------------------------------------------------------
+    
+    \includegraphics[height=6cm]{immagini/logo-unipd.png}\\[1cm]
+    
+    \includegraphics[height=1.5cm, width = 9cm]{immagini/MathDip.png}\\
+    \textsc{\myDepartment}\\[1cm]
+    
+    % Major heading such as course name
+    \textsc{\Large Scuola di Scienze}\\[0.5cm] 
+    
+    % Minor heading such as course title
+    \textsc{\large Corso di Laurea in Informatica}\\[0.5cm] 
+    
+    \vspace{1cm}
+    
+    %----------------------------------------------------------------------------------------
+    %	TITLE SECTION
+    %----------------------------------------------------------------------------------------
+    
+    \begin{LARGE}
+        \begin{center}
+            \textbf{\myTitle}\\
+        \end{center}
+    \end{LARGE}
+    
+    %----------------------------------------------------------------------------------------
+    %	AUTHOR SECTION
+    %----------------------------------------------------------------------------------------
+    
+    \vspace{1.5cm}
+    
+    \begin{large}
+        \begin{flushleft}
+            \textit{Relatore}\\ 
+            \vspace{5pt} 
+            \profTitle \myProf
+        \end{flushleft}
+        
+        \begin{flushright}
+            \textit{Laureando}\\ 
+            \vspace{5pt} 
+            \myName\\
+            \matricola
+        \end{flushright}
+    \end{large}
+    \vspace{1.3cm}
+    
+    %----------------------------------------------------------------------------------------
+    %	DATE SECTION
+    %----------------------------------------------------------------------------------------
+    \line(1, 0){338} \\
+    \begin{normalsize}
+        \textsc{Anno Accademico \myAA}
+    \end{normalsize}
+    
+    %----------------------------------------------------------------------------------------
+    % Fill the rest of the page with whitespace
+    \vfill 
+    
+\end{titlepage}
