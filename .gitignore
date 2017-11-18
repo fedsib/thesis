@@ -164,6 +164,9 @@ _minted*
 *.sympy
 sympy-plots-for-*.tex/
 
+#pdf
+*.pdf
+
 # pdfcomment
 *.upa
 *.upb
