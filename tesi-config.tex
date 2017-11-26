@@ -53,7 +53,7 @@
 \fancyhf{}
 \setlength{\headheight}{1cm} 
 \setlength{\parindent}{0pt}   % larghezza rientro della prima riga
-\setlength{\parskip}{0pt}   % distanza tra i paragrafi
+\setlength{\parskip}{0pt}     % distanza tra i paragrafi
 
 
 %**************************************************************
@@ -180,6 +180,23 @@
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
 
+%**************************************************************
+% Impostazioni quote
+%**************************************************************
+
+\newcommand*\openquote{\makebox(25,-22){\scalebox{5}{``}}}
+\newcommand*\closequote{\makebox(25,-22){\scalebox{5}{''}}}
+\colorlet{shadecolor}{Azure}
+
+\makeatletter
+\newif\if@right
+\def\shadequote{\@righttrue\shadequote@i}
+\def\shadequote@i{\begin{snugshade}\begin{quote}\openquote}
+        \def\endshadequote{%
+            \if@right\hfill\fi\closequote\end{quote}\end{snugshade}}
+\@namedef{shadequote*}{\@rightfalse\shadequote@i}
+\@namedef{endshadequote*}{\endshadequote}
+\makeatother
 
 %**************************************************************
 % Altro

@@ -37,11 +37,10 @@
 %\usepackage{amsmath,amssymb,amsthm}    % matematica
 
 \usepackage[a4paper,                    % carta A4
-            top=3cm,                    % margine superiore
-            bottom=3cm,                 % margine inferiore
-            head=30pt                   % altezza degli header
-            ]{geometry}                 
-
+top=3cm,                    % margine superiore
+bottom=3cm,                 % margine inferiore
+head=30pt                   % altezza degli header
+]{geometry}                 
 
 \usepackage[english, italian]{babel}    % per scrivere in italiano e in inglese;
                                         % l'ultima lingua (l'italiano) risulta predefinita
@@ -71,7 +70,8 @@
 
 \usepackage{hyperref}                   % collegamenti ipertestuali
 
-
+\usepackage{hypcap}                     % gestione dei link in ambienti float
+\usepackage{float}                      % abilita l'opzione H nelle figure
 
 \usepackage[binding=5mm]{layaureo}      % margini ottimizzati per l'A4; rilegatura di 5 mm
 
@@ -89,12 +89,16 @@
 
 \usepackage[italian]{varioref}          % riferimenti completi della pagina
 
-\usepackage[dvipsnames]{xcolor}         % colori
+\usepackage[dvipsnames,
+           svgnames]{xcolor}            % colori
 
 \usepackage{booktabs}                   % tabelle                                       
 \usepackage{tabularx}                   % tabelle di larghezza prefissata                                    
 \usepackage{longtable}                  % tabelle su più pagine                                        
 \usepackage{ltxtable}                   % tabelle su più pagine e adattabili in larghezza
+
+\usepackage{libertine}                  % font delle quote
+\usepackage{framed}                     % per il frame delle quote
 
 \usepackage[toc, acronym]{glossaries}   % glossario
                                         % per includerlo nel documento bisogna:
@@ -118,10 +122,10 @@
 %**************************************************************
 % Materiale iniziale
 %**************************************************************
-\frontmatter
+\pagenumbering{Roman} 
 \input{inizio-fine/frontespizio}
 \input{inizio-fine/colophon}
-\input{inizio-fine/dedica}
+%\input{inizio-fine/dedica}
 \input{inizio-fine/sommario}
 \input{inizio-fine/ringraziamenti}
 \input{inizio-fine/indici}
@@ -144,7 +148,7 @@
 %**************************************************************
 % Materiale finale
 %**************************************************************
-%\backmatter
-%\printglossaries
+\backmatter
+\printglossaries
 %\input{inizio-fine/bibliografia}
 \end{document}
