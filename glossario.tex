@@ -7,8 +7,32 @@
 \newacronym[description={\glslink{apig}{Application Program Interface}}]
     {api}{API}{Application Program Interface}
 
+\newacronym[description={\glslink{bash}{Burn Again Shell}}]
+    {bash}{Bash}{Burn Again Shell}
+
+\newacronym[description={\glslink{CentOS}{Community enterprise Operating System}}]
+    {CentOS}{CentOS}{Community enterprise Operating System}
+    
+\newacronym[description={\glslink{CIg}{Configuration Item}}]
+    {CI}{CI}{Configuration Item}
+
+\newacronym[description={\glslink{gnug}{GNU is Not Unix}}]
+    {GNU}{GNU}{}
+
+\newacronym[description={\glslink{jdk}{Java Development Kit}}]
+    {jdk}{JDK}{Java Development Kit}
+    
+\newacronym[description={\glslink{jvm}{Java Virtual Machine}}]
+{jvm}{JVM}{Java Virtual Machine}
+
+\newacronym[description={\glslink{pom}{Project Object Model}}]
+    {pom}{POM}{Project Object Model}
+
 \newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
     {uml}{UML}{Unified Modeling Language}
+    
+\newacronym[description={\glslink{xml}{eXtensible Markup Language}}]
+    {xml}{XML}{eXtensible Markup Language}
 
 %**************************************************************
 % Glossario
@@ -36,7 +60,15 @@
     name=\glslink{agent}{agent},
     text=agent,
     sort=agent,
-    description={Sinonimo di slave. Nodo fisico, virtuale o container, che esegue compiti definiti e diretti da un'istanza \textit{master}.}
+    description={Sinonimo di slave. Nodo fisico, virtuale o container, che esegue compiti definiti e diretti da un'istanza \textit{master}}
+}
+
+\newglossaryentry{application-server}
+{
+    name=\glslink{application-server}{application-server},
+    text=Application Server,
+    sort=application server,
+    description={Tipologia di server che fornisce l'infrastruttura e le funzionalità di supporto, sviluppo ed esecuzione di applicazioni nonché altri componenti server in un contesto distribuito}
 }
 
 \newglossaryentry{artefatto}
@@ -44,7 +76,15 @@
     name=\glslink{artefatto}{artefatto},
     text=artefatto,
     sort=artefatto,
-    description={Un prodotto immutabile, generato durante una \textit{build} che verrà opportunamente archiviato in un \textit{repository} e reso disponibile a determinati utenti per usi specifici (es. rilascio, testing).}
+    description={Un prodotto immutabile, generato durante una \textit{build} che verrà opportunamente archiviato in un \textit{repository} e reso disponibile a determinati utenti per usi specifici (es. rilascio, testing)}
+}
+
+\newglossaryentry{baseline}
+{
+    name=\glslink{baseline}{baseline},
+    text=baseline,
+    sort=baseline,
+    description={Nel ciclo di vita di un progetto, punto d'arrivo tecnico dal quale non si retrocede, sul quale calcolare l'avanzamento del lavoro in un progetto}
 }
 
 \newglossaryentry{build}
@@ -53,7 +93,31 @@
     text=build,
     sort=build,
     description={La costruzione, osservabile e tangibile di una componente software a partire dal suo codice sorgente.\\ 
-    Risultato della singola esecuzione di un \textit{project}, in \textit{Jenkins}. }
+    Risultato della singola esecuzione di un \textit{project}, in \textit{Jenkins}}
+}
+
+\newglossaryentry{bytecode}
+{
+    name=\glslink{bytecode}{bytecode},
+    text=bytecode,
+    sort=bytecode,
+    description={Linguaggio intermedio tra il codice sorgente e il linguaggio macchina}
+}
+
+\newglossaryentry{CIg}
+{
+    name=\glslink{CI}{CI},
+    text=Configuration Item,
+    sort=configuration item,
+    description={Singolo elemento sottoposto ad attività di gestione di configurazione. Ogni CI è identificato univocamente da:
+        \begin{itemize}
+            \item Codice Identificativo (ID);
+            \item Nome;
+            \item Data;
+            \item Autore;
+            \item Registro delle modifiche;
+            \item Stato corrente;
+        \end{itemize}}
 }
 
 \newglossaryentry{container}
@@ -61,7 +125,7 @@
     name=\glslink{container}{container},
     text=container,
     sort=container,
-    description={Processo isolato dal resto del sistema che rappresenta l'istanza in esecuzione di una data immagine, secondo opportune configurazioni aggiuntive.}
+    description={Processo isolato dal resto del sistema che rappresenta l'istanza in esecuzione di una data immagine, secondo opportune configurazioni aggiuntive}
 }
 
 \newglossaryentry{continuous building}
@@ -69,7 +133,15 @@
     name=\glslink{continuous building}{continuous building},
     text=continuous building,
     sort=continuous building,
-    description={In ingegneria del software per \emph{continuous building}, (spesso identificata come ``Build automation'') si intende il processo di automazione dell'intero ciclo di build a partire dalla compilazione del codice sorgente, al garantire che i risultati siano sempre ripetibili e conformi alle attese, all'esecuzione dei test e al rendere disponibile gli artefatti risultanti. Tale processo è una parte consistente dell'\textit{integrazione continua}. }
+    description={In ingegneria del software per \emph{continuous building}, (spesso identificata come ``Build automation'') si intende il processo di automazione dell'intero ciclo di build a partire dalla compilazione del codice sorgente, al garantire che i risultati siano sempre ripetibili e conformi alle attese, all'esecuzione dei test e al rendere disponibile gli artefatti risultanti. Tale processo è una parte consistente dell'\textit{integrazione continua}}
+}
+
+\newglossaryentry{debugger}
+{
+    name=\glslink{debugger}{debugger},
+    text=debugger,
+    sort=debugger,
+    description={Strumento per agevolare l'individuazione e permettere un'agevole rimozione di errori software, comunemente chiamati bug}
 }
 
 \newglossaryentry{deploy}
@@ -77,7 +149,23 @@
     name=\glslink{deploy}{deploy},
     text=deploy,
     sort=deploy,
-    description={L'insieme delle attività che permettono ad una componente software di essere disponibile ad un determinato uso.}
+    description={L'insieme delle attività che permettono ad una componente software di essere disponibile ad un determinato uso}
+}
+
+\newglossaryentry{gnug}
+{
+    name=\glslink{GNU}{GNU},
+    text=GNU,
+    sort=gnu,
+    description={Sistema operativo Unix-like, ideato nel 1984 da Richard Stallman e promosso dalla Free Software Foundation, allo scopo di ottenere un sistema operativo completo utilizzando esclusivamente software libero}
+}
+
+\newglossaryentry{integrazione-continua}
+{
+    name=\glslink{integrazione-continua}{integrazione-continua},
+    text=integrazione continua,
+    sort=integrazione continua,
+    description={Insieme delle attività che permettono un allineamento frequente degli ambienti di lavoro di più sviluppatori}
 }
 
 \newglossaryentry{immagine}
@@ -85,15 +173,23 @@
     name=\glslink{immagine}{immagine},
     text=immagine,
     sort=immagine,
-    description={Base fondante e immutabile utilizzata per la costruzione di \textit{container}.}
+    description={Base fondante e immutabile utilizzata per la costruzione di \textit{container}}
 }
  
 \newglossaryentry{Java EE}
 {
     name=\glslink{Java EE}{Java EE},
-    text=Java EE,
+    text=Java Enterprise Edition,
     sort=Java EE,
-    description={Insieme di specifiche le cui implementazioni vengono sviluppate in linguaggio di programmazione Java con ampio utilizzo nella programmazione Web.}
+    description={Insieme di specifiche le cui implementazioni vengono sviluppate in linguaggio di programmazione Java con ampio utilizzo nella programmazione Web}
+}
+
+\newglossaryentry{Linux}
+{
+    name=\glslink{Linux}{Linux},
+    text=Linux,
+    sort=linux,
+    description={Famiglia di sistemi operativi di tipo Unix-like, pubblicati sotto varie possibili distribuzioni, aventi la caratteristica comune di utilizzare come nucleo il kernel Linux}
 }
 
 \newglossaryentry{nodo}
@@ -101,7 +197,7 @@
     name=\glslink{nodo}{nodo},
     text=nodo,
     sort=nodo,
-    description={Insieme di specifiche le cui implementazioni vengono sviluppate in linguaggio di programmazione Java con ampio utilizzo nella programmazione Web.}
+    description={Insieme di specifiche le cui implementazioni vengono sviluppate in linguaggio di programmazione Java con ampio utilizzo nella programmazione Web}
 }
 
 \newglossaryentry{master}
@@ -109,7 +205,7 @@
     name=\glslink{master}{master},
     text=master,
     sort=master,
-    description={L'unità centrale di coordinazione dei processi che possiede la configurazione, carica i plugin e gestisce tutti gli aspetti di esecuzione dei vari \textit{projects}.}
+    description={L'unità centrale di coordinazione dei processi che possiede la configurazione, carica i plugin e gestisce tutti gli aspetti di esecuzione dei vari \textit{projects}}
 }
 
 \newglossaryentry{middleware}
@@ -117,7 +213,7 @@
     name=\glslink{middleware}{middleware},
     text=middleware,
     sort=middleware,
-    description={Insieme di programmi informatici che fungono da intermediari tra diverse applicazioni e componenti software.}
+    description={Insieme di programmi informatici che fungono da intermediari tra diverse applicazioni e componenti software}
 }
 
 \newglossaryentry{plugin}
@@ -125,7 +221,7 @@
     name=\glslink{plugin}{plugin},
     text=plugin,
     sort=plugin,
-    description={Componente software che fornisce funzionalità aggiuntive ad estensione di un determinato prodotto software preesistente ma separatamente da esso.}
+    description={Componente software che fornisce funzionalità aggiuntive ad estensione di un determinato prodotto software preesistente ma separatamente da esso}
 }
 
 \newglossaryentry{project}
@@ -133,7 +229,23 @@
     name=\glslink{project}{project},
     text=project,
     sort=project,
-    description={Una configurazione definita da un utente, che descrive un lavoro che Jenkins dovrà svolgere, come ad esempio costruire una componente software, eseguire uno script, ecc... A volte riferito come \textit{job}.}
+    description={Una configurazione definita da un utente, che descrive un lavoro che Jenkins dovrà svolgere, come ad esempio costruire una componente software, eseguire uno script, ecc... A volte riferito come \textit{job}}
+}
+
+\newglossaryentry{Red Hat}
+{
+    name=\glslink{Red Hat}{Red Hat},
+    text=Red Hat,
+    sort=red hat,
+    description={Società multinazionale statunitense che si dedica allo sviluppo software e al supporto di software libero e open source in ambiente aziendale}
+}
+
+\newglossaryentry{repository}
+{
+    name=\glslink{repository}{repository},
+    text=repository,
+    sort=repository,
+    description={Base di dati centralizzata nella quale risiedono, individualmente, tutti i \gls{CI} di ogni \gls{baseline} nella loro storia completa}
 }
 
 \newglossaryentry{slave}
@@ -141,7 +253,7 @@
     name=\glslink{slave}{slave},
     text=slave,
     sort=slave,
-    description={Letteralmente, schiavo. In Jenkins rappresenta un nodo sul quale vengono eseguiti più compiti, definiti sotto forma di \textit{project}, secondo la direzione di un \textit{master}. A volte definito come \textit{Agent}.}
+    description={Letteralmente, schiavo. In Jenkins rappresenta un nodo sul quale vengono eseguiti più compiti, definiti sotto forma di \textit{project}, secondo la direzione di un \textit{master}. A volte definito come \textit{Agent}}
 }
 
 \newglossaryentry{system integration}
@@ -149,5 +261,5 @@
     name=\glslink{system integration}{system integration},
     text=system integration,
     sort=system integration,
-    description={Processo che consiste nel collegare assieme differenti sistemi e applicazioni software, a livello fisico o funzionale in modo che agiscano come un insieme coordinato e coeso.}
+    description={Processo che consiste nel collegare assieme differenti sistemi e applicazioni software, a livello fisico o funzionale in modo che agiscano come un insieme coordinato e coeso}
 }
