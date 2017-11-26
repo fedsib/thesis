@@ -7,47 +7,74 @@
 \label{cap:introduzione}
 %**************************************************************
 
-Introduzione al contesto applicativo.\\
+In questo capitolo introduttivo viene fornita una panoramica dell’azienda \myCompany, proponente dello stage da me svolto e l’idea alla base del progetto.
+Vengono inoltre fissate alcune convenzioni tipografiche per agevolare la lettura del documento e viene presentata la struttura dello stesso, secondo una suddivisione per capitoli.
 
-\noindent Esempio di utilizzo di un termine nel glossario \\
-\gls{api}. \\
+%\noindent Esempio di utilizzo di un termine nel glossario \\
+%\gls{api}. \\
 
-\noindent Esempio di citazione in linea \\
-\cite{site:agile-manifesto}. \\
+%\noindent Esempio di citazione in linea \\
+%\cite{site:agile-manifesto}. \\
 
-\noindent Esempio di citazione nel pie' di pagina \\
-citazione\footcite{womak:lean-thinking} \\
+%\noindent Esempio di citazione nel pie' di pagina \\
+%citazione\footcite{womak:lean-thinking} \\
 
 %**************************************************************
 \section{L'azienda}
 
-Descrizione dell'azienda.
+IKS s.r.l. (Information Knowledge Supply) nasce nel 1999 a Padova, come azienda di 
+consulenza e \textit{\gls{system integration}} con servizi rivolti ad una variegata tipologia di clienti quali banche e centri servizi, industria e pubblica amministrazione.\\
+
+L'azienda punta da sempre su temi strategici in capo informatico, quali la sicurezza informatica, lo sviluppo di soluzioni software \textit{\gls{Java EE}}, l'automazione e l'innovazione. \\
+
+Questo approccio portò IKS negli anni 2000 ad essere uno dei leader nel settore, nel nord-est italiano, con sedi a Padova, Milano e Trento e nel 2016 a formare, assieme ad altre tre aziende (Insirio, System Evolution e Kirey) il gruppo Kirey, con l'obiettivo di:
+
+\begin{shadequote}
+    Diventare il principale progetto italiano di integrazione e collaborazione fra imprese del mondo IT e assumere il ruolo di protagonista di riferimento di tutte le aziende che vogliono affrontare percorsi di innovazione digitale, riunendo eccellenze di settore, competenze verticali e partnership tecnologiche di alto livello.\par\emph{Sito internet Kirey Group}
+\end{shadequote}
+
+
+\vspace{2.5em}
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[height=2cm, keepaspectratio]{../immagini/IKS.png}
+    \caption{Logo di IKS s.r.l.}
+\end{figure}
+
+L'azienda è strutturata in \textit{business units (BU)}, cioè divisioni specializzate in particolari compiti. Ad esempio: la BU \textit{\gls{middleware}} si occupa della gestione della configurazione di applicativi dei clienti, andando a fornire opportune impostazioni dell'infrastruttura secondo le richieste pervenute.
+
 
 %**************************************************************
 \section{L'idea}
-
+%TODO
 Introduzione all'idea dello stage.
 
 %**************************************************************
-\section{Organizzazione del testo}
+\section{Organizzazione del documento}
+
+Dopo questo primo capitolo introduttivo, il resto del documento si articola come segue:
 
 \begin{description}
-    \item[{\hyperref[cap:processi-metodologie]{Il secondo capitolo}}] descrive ...
     
-    \item[{\hyperref[cap:descrizione-stage]{Il terzo capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:lo-stage]{Il secondo capitolo}}] descrive in dettaglio il progetto di stage, riportando le motivazioni che hanno spinto l'azienda a proporlo e le mie personali nella scelta, gli obiettivi da raggiungere e la relativa pianificazione.
     
-    \item[{\hyperref[cap:analisi-requisiti]{Il quarto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:tecnologie-adottate]{Il terzo capitolo}}] approfondisce le tecnologie adottate nella realizzazione del progetto, fornendo per ciascuna di esse una panoramica generale e contestualizzandone il ruolo nel sistema implementato.
     
-    \item[{\hyperref[cap:progettazione-codifica]{Il quinto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:realizzazione-del-sistema]{Il quarto capitolo}}] illustra le varie fasi di realizzazione del sistema, dalla progettazione all'effettiva implementazione.
     
-    \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:studio-della-comunicazione]{Il quinto capitolo}}]riporta uno studio approfondito sulle modalità di comunicazione \textit{\gls{master}} e \textit{\gls{slave}} e relativi protocolli.
     
-    \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] descrive ...
+    \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] riporta le strategie di verifica e validazione adottate e il risultato dei test condotti.
+    
+    \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] infine, si riportano alcune considerazioni circa l'attività di stage e gli obiettivi raggiunti.
 \end{description}
 
 Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
 \begin{itemize}
-	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
-	\item per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \emph{parola}\glsfirstoccur;
+	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento. \\
+    Alcune definizioni dei termini del glossario, possono essere tratte da fonti online, tra cui: \\ 
+    \url{https://it.wikipedia.org/};
+	%\item Alla prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \emph{parola}\glsfirstoccur;
 	\item i termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
 \end{itemize}
