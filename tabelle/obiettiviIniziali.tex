@@ -1,0 +1,24 @@
+\taburowcolors[2] 2{tableLineOne .. tableLineTwo}
+\tabulinesep = ^3mm_2mm
+\begin{longtabu} to \textwidth {ccX}
+    \caption[Obiettivi dello stage]{Obiettivi dello stage}
+    \label{tabella:obiettivi-iniziali}
+    \endlastfoot
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{tableHeaderRed}
+    %\hline
+    \textbf{ID} & \textbf{Importanza} & \textbf{Descrizione} \\
+    %\hline
+    O01 & Obbligatorio & Progettazione dell’architettura di un sistema di \gls{continuous building} \\ %\hline
+    O02 & Obbligatorio & Implementazione dell’architettura progettata su sistemi IKS \\ %\hline
+    O03 & Obbligatorio & Stesura manuale di installazione \\ %\hline
+    O04 & Obbligatorio & Utilizzo della piattaforma implementata per la produzione di \gls{container} Docker \\ %\hline
+    O05 & Obbligatorio & Studio di fattibilità sulle modalità di comunicazione \gls{master} e \gls{slave} \\ %\hline
+    D01 & Desiderabile & Containerizzazione della piattaforma implementata \\ %\hline
+    D02 & Desiderabile & Relazione sui confronti prestazionali tra la piattaforma e la sua controparte containerizzata \\ %\hline
+    DO3 & Desiderabile & Individuazione metriche per il monitoraggio della piattaforma \\ %\hline
+    DO4 & Desiderabile &  Individuazione procedure per il monitoraggio, backup, ripristino e upgrade dell’infrastruttura \\ %\hline
+    DO5 & Desiderabile & Breve relazione che documenti metriche e procedure dei punti DO3-4 \\ %\hline
+    F01 & Facoltativo & Implementazione di un plugin base per Jenkins \\ %\hline
+\end{longtabu}
+\clearpage

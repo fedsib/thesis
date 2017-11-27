@@ -82,7 +82,7 @@ head=30pt                   % altezza degli header
 
 \usepackage{microtype}                  % microtipografia
 
-\usepackage{mparhack,fixltx2e,relsize}  % finezze tipografiche
+\usepackage{mparhack,relsize}           % finezze tipografiche fixltx2e dopo il 2015 non è più richiesto
 
 \usepackage{nameref}                    % visualizza nome dei riferimenti                                      
 
@@ -93,9 +93,10 @@ head=30pt                   % altezza degli header
 \usepackage[italian]{varioref}          % riferimenti completi della pagina
 
 \usepackage[dvipsnames,
-           svgnames]{xcolor}            % colori
+           svgnames,table]{xcolor}      % colori
 
-\usepackage{booktabs}                   % tabelle                                       
+\usepackage{booktabs}                   % tabelle        
+\usepackage{tabu}                       % ulteriori tabelle                               
 \usepackage{tabularx}                   % tabelle di larghezza prefissata                                    
 \usepackage{longtable}                  % tabelle su più pagine                                        
 \usepackage{ltxtable}                   % tabelle su più pagine e adattabili in larghezza
