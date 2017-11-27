@@ -22,7 +22,7 @@ Vengono inoltre fissate alcune convenzioni tipografiche per agevolare la lettura
 
 %**************************************************************
 \section{L'azienda}
-
+%**************************************************************
 IKS \footnote{\url{https://www.iks.it/}} s.r.l. (Information Knowledge Supply) nasce nel 1999 a Padova, come azienda di consulenza e \textit{\gls{system integration}} con servizi rivolti ad una variegata tipologia di clienti quali banche e centri servizi, industria e pubblica amministrazione.\\
 
 L'azienda punta da sempre su temi strategici in capo informatico, quali la sicurezza informatica, lo sviluppo di soluzioni software \textit{\gls{Java EE}}, l'automazione e l'innovazione. \\
@@ -44,14 +44,35 @@ Questo approccio portò IKS negli anni 2000 ad essere uno dei leader nel settore
 
 L'azienda è strutturata in \textit{business units (BU)}, cioè divisioni specializzate in particolari compiti. Ad esempio: la BU \textit{\gls{middleware}} si occupa della gestione della configurazione di applicativi dei clienti, andando a fornire opportune impostazioni dell'infrastruttura secondo le richieste pervenute.
 
-
 %**************************************************************
 \section{L'idea}
-%TODO
-Introduzione all'idea dello stage.
+%**************************************************************
+Il mercato dello sviluppo software sta cambiando; mentre in passato si assisteva alla nascita di piccole medie imprese, focalizzate sullo sviluppo di uno o due prodotti, con tempi di rilascio lunghi tra una versione e l'altra, oggi la competizione è serrata. \\ Negli ultimi anni si assiste alla nascita di nuovi paradigmi: il \gls{machine-learning}, con macchine in grado di eseguire autonomamente alcune operazioni; l'\gls{iot}, con dispositivi perennemente connessi alla rete, in grado di misurare l'ambiente che li circonda e comunicare tra loro; e infine un'automazione sempre più spinta in tutti gli ambiti delle nostre vite quotidiane.\\
+Da applicazioni monolitiche (un unico prodotto software dalle molte funzionalità, strettamente dipendenti e correlate tra loro), si sta passando allo sviluppo di soluzioni flessibili a microservizi, dove vari moduli con funzionalità univoche e distinte vengono composti con altri moduli, al fine di ottenere un'architettura scalabile, snella e robusta.\\
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=7cm, keepaspectratio]{../immagini/Microservice_Architecture.png}
+    \caption{Esempio d'applicazione a microservizi, immagine tratta da \\ \url{http://microservices.io/patterns/microservices.html}}
+\end{figure}
+
+In quest'ottica, va ripensato l'intero ciclo di sviluppo del software; un'azienda, anche di grandi dimensioni, dovrà mettere in campo dei processi evolutivi per non rischiare di perdere posizioni di mercato. 
+
+IKS fornisce ai suoi clienti degli appositi servizi di consulenza, accompagnandoli nella transizione verso una metodologia di sviluppo \textit{Devops}; tale metodologia di sviluppo è un'evoluzione del modello \gls{agile}, incentrato su un'ampia automazione delle operazioni ripetitive (quali ad esempio il testing e il rilascio) e sul principio cardine di collaborazione stretta tra sviluppo, ambito \textit{operations}(cioè gestione dell'infrastruttura, mantenimento dell'ambiente di lavoro, configurazione, ecc...) e garanzia della qualità, in passato visti come mondi separati e ben distinti. \\
+
+Scopo dello stage è lo studio e la realizzazione di un sistema di \gls{continuous building}, che in ottica \textit{Devops}, permetta un'automazione dei processi di \gls{build}, \textit{test} e \textit{rilascio} del software con un'attenzione particolare agli aspetti di portabilità del sistema, anche in previsione di un funzionamento dello stesso in ambienti \gls{cloud}.
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[height=5cm, keepaspectratio]{../immagini/Devops.png}
+    \caption{Visione d'insieme della metodologia \textit{Devops}, immagine tratta da \\ \url{http://it.wikipedia.org}}
+\end{figure}
 
 %**************************************************************
 \section{Organizzazione del documento}
+%**************************************************************
 
 Dopo questo primo capitolo introduttivo, il resto del documento si articola come segue:
 
