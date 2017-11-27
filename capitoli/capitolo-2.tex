@@ -15,7 +15,7 @@ Viene inoltre riportata un'analisi preventiva dei possibili rischi e viene espos
 \section{Introduzione al progetto}
 %**************************************************************
 
-Riprendendo il contesto definito nel paragrafo ``{\hyperref[sec:idea]{1.3 - L'idea}}'', occorre definire in modo più approfondito e dettagliato la metodologia di sviluppo \textit{Devops}; abbiamo visto come tale metodologia di sviluppo si focalizza sul rapido rilascio dei prodotti software e su un automazione spinta dei processi ripetibili. In tutto questo non vi è più una divisione netta e separata tra sviluppatori e l'ambito \textit{operations} ma viene instaurato un clima basato sulla collaborazione e sulla condivisione delle conoscenze. 
+Riprendendo il contesto definito nella sezione ``{\hyperref[sec:idea]{1.3 - L'idea}}'', occorre definire in modo più approfondito e dettagliato la metodologia di sviluppo \textit{Devops}; abbiamo visto come tale metodologia di sviluppo si focalizza sul rapido rilascio dei prodotti software e su un automazione spinta dei processi ripetibili. In tutto questo non vi è più una divisione netta e separata tra sviluppatori e l'ambito \textit{operations} ma viene instaurato un clima basato sulla collaborazione e sulla condivisione delle conoscenze. 
 
 \begin{figure}[H]
     \capstart
@@ -125,22 +125,50 @@ Alle motivazioni economiche e logistiche, ho preferito anteporre quelle personal
 \section{Vincoli}
 %**************************************************************
 \subsection{Vincoli metodologici}
+
+All'inizio del progetto di stage è stato concordato con il tutor aziendale un piano di lavoro di massima, comprendente la pianificazione dello stage da svolgersi prevalentemente presso la sede dell'azienda ospitante in Corso Stati Uniti 14 bis a Padova.
+
+Regolarmente, (circa una volta la settimana) si sono tenuti incontri diretti con il tutor aziendale  per verificare lo stato di avanzamento del progetto, ridefinire gli obiettivi, affinare
+la ricerca e aggiornare il piano stesso di lavoro; il tutor aziendale ha inoltre richiesto un breve report giornaliero delle attività svolte da inviare via mail in modo da essere costantemente aggiornato sul procedere del lavoro e poter tempestivamente chiarire dubbi e fornire chiarimenti.
+
 \subsection{Vincoli temporali}
+Lo stage curriculare, all'interno del corso di informatica si deve svolgere in un margine di ore compreso tra le 300 e le 320 ore presso l'azienda ospitante. Il progetto che ho svolto presso IKS ha avuto una durata di 304 ore circa, più alcune ore dedicate da remoto per la stesura di documentazione tecnica. \\
+
+La pianificazione iniziale è stata seguita in linea di massima, ma con l'emergere di altre priorità come lo studio dei protocolli di comunicazione tra \gls{master} e \gls{slave}, inizialmente non previste dal piano di lavoro ha sottratto tempo ad altre attività come lo sviluppo di un \gls{plugin} base da usare come modello di sviluppo.
+
 \subsection{Vincoli tecnologici}
+
+Gli unici vincoli tecnologici imposti dall'azienda circa la piattaforma di \gls{continuous building} da implementare riguardavano il sistema operativo da utilizzare, \gls{CentOS} 7, Jenkins come fulcro centrale del progetto al fine di automatizzare i processi di \gls{build} e Docker come standard ``de-facto'' nelle tecnologie di containerizzazione.
 
 %**************************************************************
 \section{Obiettivi}
 %**************************************************************
 
-\hyperref[tab:obiettivi-iniziali]{Tabella 2.1}
+Vengono qui riportati gli obiettivi iniziali dello stage, in forma tabellare.
+
+Ogni obiettivo è descritto da tre attributi:
+
+\begin{itemize}
+    \item \textbf{ID}. Un codice identificativo univoco, al fine di tracciare l'obiettivo. Esso è determinato da una lettera indicante la priorità (O, D o F) sequita da un numero progressivo a due cifre.
+    \item \textbf{Priorità}. L'importanza attribuita all'obiettivo. Essa può essere:
+    \begin{itemize}
+        \item \textbf{Obbligatorio}. Obiettivi vincolanti in quanto esplicitamente indicati come primari dall'azienda proponente; 
+        \item \textbf{Desiderabile}. Obiettivi non vincolanti o strettamente necessari, ma dal riconoscibile valore
+        aggiunto;
+        \item \textbf{Facoltativo}. Obiettivi rappresentanti valore aggiunto non strettamente competitivo, giudicati dall'azienda come opzionali.
+    \end{itemize} 
+    \item \textbf{Descrizione}. Una breve descrizione riepilogativa dell'obiettivo. 
+\end{itemize}
 
 \input{./tabelle/obiettiviIniziali.tex}
 
-
+In sezione {\hyperref[sec:obiettivi-raggiunti]{``8.1 - Raggiungimento degli obiettivi''}} viene fornito un riepilogo in forma tabellare di tali obiettivi, indicando per ciascuno di essi il grado di soddisfacimento.
 
 %**************************************************************
 \section{Pianificazione}
 %**************************************************************
+
+\input{./tabelle/pianificazione-iniziale.tex}
 
 %**************************************************************
 \section{Ambiente di Lavoro}
@@ -151,9 +179,32 @@ Alle motivazioni economiche e logistiche, ho preferito anteporre quelle personal
 \subsection{Gestione di progetto}
 
 \subsection{Documentazione}
+La documentazione tecnica è stata redatta utilizzando \textit{Libreoffice 5.4.2}, lo strumento, pur essendo open source non si è rivelato pienamente adatto allo scopo, in quanto non permette una standardizzazione della documentazione (anche se è possibile definire dei template) e della formattazione. \LaTeX\ probabilmente avrebbe rappresentato un'alternativa migliore, in quanto codice pienamente versionabile ma sarebbe di difficile adozione all'interno di un team, in quanto tutti dovrebbero conoscere tale linguaggio. 
 
 \subsection{Ambiente di sviluppo}
+Per la piccola parte di sviluppo e personalizzazione di script \textit{Groovy} si è utilizzato Visual Studio Code. \\
+Visual Studio Code\footnote{\url{https://code.visualstudio.com/}}, è un editor open source sviluppato da Microsoft, basato su \textit{Electron}, un framework javascript che permette lo sviluppo di applicazioni desktop.
+La caratteristica chiave di Visual Studio Code consiste in un'ampia gamma di \gls{plugin} ed estensioni, che lo rendono un editor versatile e facilmente adattabile a varie esigenze. Esso inoltre risulta configurabile in modo preciso e dettagliato tramite \gls{json}. 
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[height=3cm, keepaspectratio]{../immagini/VSCode.png}
+    \caption{Logo di Visual Studio code}
+\end{figure}
 
 %**************************************************************
 \section{Analisi preventiva dei rischi}
 %**************************************************************
+In tabella {\hyperref[tab:ab:rischi]{``2.2 - Analisi dei rischi''}} viene riportata l'analisi dei rischi che ho dovuto affrontare nel corso del progetto. Per ogni rischio viene definito:
+
+\begin{itemize}
+    \item Un nome;
+    \item Una breve descrizione;
+    \item La modalità di rilevamento;
+    \item La probabilità di occorrenza;
+    \item Il grado di pericolosità;
+    \item Il piano di contingenza.
+\end{itemize}
+
+\input{./tabelle/analisi-rischi-tab.tex}
