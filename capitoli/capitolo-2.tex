@@ -8,13 +8,118 @@
 \label{cap:lo-stage}
 %**************************************************************
 
-\intro{Brevissima introduzione al capitolo}\\
+\intro{In questo capitolo viene illustrato dettagliatamente il progetto di stage, riportandone la pianificazione iniziale, gli obiettivi da raggiungere, i vincoli ai quali era sottoposto e le motivazioni personali nella scelta.
+Viene inoltre riportata un'analisi preventiva dei possibili rischi e viene esposto l'ambiente di lavoro. }\\
 
 %**************************************************************
 \section{Introduzione al progetto}
 %**************************************************************
 
-\subsection{Scelta dello stage: Motivazioni personali}
+Riprendendo il contesto definito nel paragrafo ``{\hyperref[sec:idea]{1.3 - L'idea}}'', occorre definire in modo più approfondito e dettagliato la metodologia di sviluppo \textit{Devops}; abbiamo visto come tale metodologia di sviluppo si focalizza sul rapido rilascio dei prodotti software e su un automazione spinta dei processi ripetibili. In tutto questo non vi è più una divisione netta e separata tra sviluppatori e l'ambito \textit{operations} ma viene instaurato un clima basato sulla collaborazione e sulla condivisione delle conoscenze. 
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[height=3cm, keepaspectratio]{../immagini/devopsbridge.png}
+    \caption{Devops come punto d'unione tra sviluppo e operations, immagine tratta da \\ \url{https://intland.com/}}
+\end{figure}
+
+I processi di tale metodologia consistono nel:
+
+\begin{itemize}
+    \item Pianificare gli obiettivi da raggiungere e progettare le funzionalità da implementare nel prodotto software al fine che esso consegua tali obiettivi (\textit{Plan});
+    \item Implementare effettivamente tali funzionalità (\textit{Code});
+    \item Costruire le componenti software e i relativi artefatti (\textit{Build});
+    \item Assicurarsi che le componenti software costruite siano conformi alle attese e ai bisogni (\textit{Test})
+    \item Rilasciare il prodotto (\textit{Release});
+    \item Rendere disponibile il prodotto a determinati usi (\textit{Deploy});
+    \item Far si che il prodotto sia operativo, tramite opportune configurazioni (\textit{Operate});
+    \item Monitorare le performance e lo stato del prodotto (\textit{Monitor}).
+\end{itemize}
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=7cm, keepaspectratio]{../immagini/devops-process.png}
+    \caption{I vari processi coinvolti all'interno della metodologia \textit{Devops}, immagine tratta da \\ \url{https://www.01net.it/devops-monitoring/}}
+\end{figure}
+
+Nel concreto, tali processi vengono svolti tramite una serie di attività e strumenti, tra cui:
+
+\begin{itemize}
+    \item Sviluppo del codice tramite opportuni ambienti di sviluppo integrato (\gls{ide}) e versionamento del codice che risiederà in un \gls{repository};
+    \item Strumenti di \gls{integrazione-continua} al fine di automatizzare il processo di \textit{\gls{build}} e il loro monitoraggio;
+    \item Attività continue e automatizzate di \textit{testing} al fine di verificare le funzionalità del prodotto, e garantire che esso abbia le desiderate proprietà qualitative; 
+    \item Attività automatizzate di \textit{packaging}, con un \gls{repository} per gli artefatti;
+    \item Attività di gestione dei cambiamenti, approvazione dei rilasci e automazione degli stessi;
+    \item Strumenti di configurazione dell'infrastruttura, vista anch'essa come codice (\textit{Infrastructure as Code})
+    \item Strumenti e metriche di monitoraggio continuo della \textit{user experience} e delle prestazioni del prodotto software.
+\end{itemize}
+
+Le sfide che tale metodologia si trova ad affrontare sono molteplici, ad esempio:
+
+\begin{itemize}
+    \item \textbf{Difficoltà nel mantenere e rendere disponibile l'ambiente di produzione}. A tal fine, si fa ampio uso di tecnologie di virtualizzazione e containerizzazione in modo da simulare gli ambienti, soprattutto durante le fasi di test dei prodotti;
+    \item \textbf{Gestione dell'infrastruttura difficilmente automatizzabile}. Opportuni strumenti di gestione della configurazione permettono di gestire in modo proattivo l'infrastruttura, vista come codice, tramite linguaggi di configurazione facilmente personalizzabili;
+    \item \textbf{Difficoltà nel diagnosticare mancanze e ricevere feedback sul prodotto.} Grazie a strumenti dedicati, è possibile un monitoraggio efficace e continuo delle applicazioni.  
+\end{itemize}
+
+Uno dei punti cardine è rappresentato dall'\textit{\gls{integrazione-continua}}, cioè l'allineamento continuo degli ambienti di lavoro di più sviluppatori. \\
+Nello specifico l'\gls{integrazione-continua} si basa su:
+
+\begin{itemize}
+    \item Versionamento del codice;
+    \item Automatizzazione delle build e dei test;
+    \item Esecuzione dei test eseguiti in un clone dell'ambiente di produzione;
+    \item Gestione e recupero degli artefatti;
+    \item Automatizzazione dei rilasci.
+\end{itemize} 
+
+Il \textit{\gls{continuous building}}, facilmente confondibile con l'attività di \gls{integrazione-continua}
+rappresenta una parte cospicua ma non il tutto. Non si occupa ad esempio della configurazione dei \gls{repository} per il versionamento del codice sorgente, ma assume che siano già presenti. Così come non si occupa direttamente della gestione dell'infrastruttura \gls{cloud}.
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=12cm, keepaspectratio]{../immagini/cb.png}
+    \caption{In rosso, la parte di \gls{continuous building}, all'interno dell'\gls{integrazione-continua}, immagine tratta da \\ \url{https://opsani.com/}}
+\end{figure}
+ 
+\subsection{Motivazioni aziendali}
+
+IKS, con il progetto di stage proposto intende principalmente formare personale per l'attività di consulenza al fine di poter fornire ai propri clienti servizi in ambito \textit{Devops}, data la richiesta di mercato sempre maggiore. L'azienda inoltre intendeva valutare l'uso di \gls{container} al fine di ottimizzare l'uso delle risorse dei nodi fisici.
+
+\subsection{Motivazioni personali}
+
+Lo stage curricolare rappresenta la tappa finale del percorso di studi in Informatica presso l'\myUni. Tale attività costituisce un'interessante opportunità per mettere in contatto le realtà aziendali che necessitano di competenze specifiche, con studenti che si trovano ad approcciarsi al mondo del lavoro. A tal proposito ogni anno, tra marzo e aprile l'università, con il patrocinio di Confindustria Padova organizza un apposito evento denominato \textit{STAGE-IT}, per mettere in comunicazione aziende e studenti.\\
+
+Durante \textit{STAGE-IT 2017} ho avuto modo di sostenere sedici colloqui preliminari con varie aziende; colloqui ai quali successivamente ne sono seguiti altri che mi hanno fornito una visione più chiara dei progetti proposti al fine di una scelta finale. Tra le varie proposte, ho stabilito dei criteri così riassunti: personali, professionali, economici e logistici.
+
+\subsubsection{Motivazioni personali}
+
+Le motivazioni personali rappresentano le tematiche di mio interesse, nello specifico cercavo uno stage con le seguenti caratteristiche:
+
+\begin{itemize}
+    \item \textbf{Forte orientamento all'open source}. L'uso di tecnologie open source e software libero è in costante crescita tra le aziende informatiche, inoltre avere a disposizione il codice sorgente delle applicazioni che si andranno ad utilizzare permette da una parte di capire il loro funzionamento e dall'altra di potere adattarle secondo i propri bisogni. 
+    \item \textbf{Ambito innovativo}. Cercavo uno stage che mi permettesse di rapportarmi con i temi caldi attualmente presenti nel mercato dell'IT, quali ad esempio: \textit{\gls{machine-learning}}, \gls{iot}, \textit{devops}, \gls{blockchain} o \gls{cloud}.
+    \item \textbf{Ambito prevalentemente sistemistico}. Il nostro corso di studi si focalizza principalmente nell'ambito sviluppo, l'ambito sistemistico rappresentava una sfida e un'opportunità per integrare le mie conoscenze.
+\end{itemize}
+
+\subsubsection{Motivazioni professionali}
+
+\begin{itemize}
+    \item \textbf{Ambito innovativo}. Oltre all'interesse personale, approcciare tecnologie innovative pensoi permetta di avere più opportunità lavorative e di confrontarsi con sfide sempre nuove. 
+\end{itemize}
+
+\subsubsection{Motivazioni economiche e logistiche}
+
+Alle motivazioni economiche e logistiche, ho preferito anteporre quelle personali e professionali. 
+
+\begin{itemize}
+    \item \textbf{Luogo di lavoro}. Sicuramente uno stage vicino casa sarebbe stato comodo ma non mi avrebbe permesso di crescere. La zona industriale di Padova, parecchio lontana sia fisicamente che idealmente alla mia ``comfort-zone'' mi ha sicuramente aiutato in questo.
+    \item \textbf{Logistica - Trasporti}. Idealmente avrei voluto minimizzare il tempo di trasporto viaggiando in auto, ma questo non è stato possibile. Il dover coordinare diverse tipologie di trasporto mi ha comunque permesso di migliorare le mie doti organizzative e gestionali. 
+    \item \textbf{Rimborsi}. Cercavo un'azienda che fornisse un minimo di rimborso spese. IKS in questo senso ha messo a disposizione dei buoni pasto a parziale copertura delle spese di ristorazione.
+\end{itemize}
 
 %**************************************************************
 \section{Vincoli}
@@ -27,6 +132,12 @@
 \section{Obiettivi}
 %**************************************************************
 
+\hyperref[tab:obiettivi-iniziali]{Tabella 2.1}
+
+\input{./tabelle/obiettiviIniziali.tex}
+
+
+
 %**************************************************************
 \section{Pianificazione}
 %**************************************************************
@@ -34,6 +145,14 @@
 %**************************************************************
 \section{Ambiente di Lavoro}
 %**************************************************************
+
+\subsection{Metodologia di sviluppo}
+
+\subsection{Gestione di progetto}
+
+\subsection{Documentazione}
+
+\subsection{Ambiente di sviluppo}
 
 %**************************************************************
 \section{Analisi preventiva dei rischi}
