@@ -178,8 +178,25 @@
 %**************************************************************
 % Impostazioni di listings
 %**************************************************************
+
+%Dockerfile
+\lstdefinelanguage{docker}{
+    keywords={FROM, RUN, COPY, ADD, ENTRYPOINT, CMD,  ENV, WORKDIR, EXPOSE, LABEL, USER, VOLUME, STOPSIGNAL, ONBUILD, MAINTAINER},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{\#},
+    numbers=left,
+    stepnumber=1,
+    commentstyle=\color{purple}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
+%C++
 \lstset{
-    language=[LaTeX]Tex,%C++,
+    language=[LaTeX]Tex,
     keywordstyle=\color{RoyalBlue}, %\bfseries,
     basicstyle=\small\ttfamily,
     %identifierstyle=\color{NavyBlue},
