@@ -168,7 +168,11 @@ In sezione {\hyperref[sec:obiettivi-raggiunti]{``8.1 - Raggiungimento degli obie
 \section{Pianificazione}
 %**************************************************************
 
+In {\hyperref[tab:initial-plan]{tabella 2.2} viene riportata la pianificazione delle attività, con la relativa suddivisione oraria.
+
 \input{./tabelle/pianificazione-iniziale.tex}
+
+\newpage
 
 %**************************************************************
 \section{Ambiente di Lavoro}
@@ -176,13 +180,34 @@ In sezione {\hyperref[sec:obiettivi-raggiunti]{``8.1 - Raggiungimento degli obie
 
 \subsection{Metodologia di sviluppo}
 
+IKS adotta la metodologia di sviluppo \gls{agile}, tuttavia, per questo progetto dove la parte di sviluppo è poco prevalente, si è scelto di adottare \gls{cbse}, cioè un processo di sviluppo basato sul riuso di componenti software già esistenti e sulla loro integrazione. \\ 
+Visto che le componenti software sono già esistenti, non è detto che esse rispecchino pienamente le funzionalità necessarie al prodotto finale; occorrerà quindi una loro attenta selezione in relazione ai requisiti del prodotto finale e dei bisogni degli \gls{stakeholder}, con i quali andrà instaurato uno stretto rapporto.
+
+\begin{figure}[H]
+    \capstart
+    \captionsetup{justification=centering}
+    \centering
+    \includegraphics[width=12cm, keepaspectratio]{../immagini/CBSE.jpg}
+    \caption{Rappresentazione dela metodologia CBSE, immagine tratta da \url{http://www.federica.unina.it/ingegneria/ingegneria-software-ii/component-based-software-engineering-sviluppo-cbse/}}
+\end{figure}
+
+Il modello a componenti, favorisce la separazione delle responsabilità secondo il \textit{\gls{srp}} e permette di ottenere un basso accoppiamento tra le componenti e il sistema principale.
+
+Jenkins, con la sua architettura a \gls{plugin} ben si presta ad una composizione gerarchica, dove il servizio principale invoca direttamente quelli esposti dai singoli \gls{plugin} che ne estendono le funzionalità.
+
 \subsection{Gestione di progetto}
+
+\subsubsection{Versionamento}
+Inizialmente da quanto preventivato, per il versionamento del codice sorgente di alcune applicazioni Maven d'esempio non è stato possibile utilizzare \textit{git}. L'azienda ha però fornito un \gls{repository} \gls{cvs}\footnote{\url{https://savannah.nongnu.org/project/memberlist.php?detailed=1&group=cvs}} che è stato utilizzato principalmente per lo storage e il versionamento di applicazioni Maven e dei \textit{Dockerfile} creati. \\
+
+\gls{cvs} è un sistema di versionamento del codice piuttosto vetusto (non presenta nuove versioni dal 2008) ma essendo uno tra i primi strumenti di versionamento, tra l'altro costituito da software libero, è ancora parecchio usato. \\
+Non avendo mai approfondito in dettaglio tale strumento, mi sono avvalso di un client grafico, smartCVS\footnote{\url{https://www.syntevo.com/smartcvs/}}.
 
 \subsection{Documentazione}
 La documentazione tecnica è stata redatta utilizzando \textit{Libreoffice 5.4.2}, lo strumento, pur essendo open source non si è rivelato pienamente adatto allo scopo, in quanto non permette una standardizzazione della documentazione (anche se è possibile definire dei template) e della formattazione. \LaTeX\ probabilmente avrebbe rappresentato un'alternativa migliore, in quanto codice pienamente versionabile ma sarebbe di difficile adozione all'interno di un team, in quanto tutti dovrebbero conoscere tale linguaggio. 
 
 \subsection{Ambiente di sviluppo}
-Per la piccola parte di sviluppo e personalizzazione di script \textit{Groovy} si è utilizzato Visual Studio Code. \\
+Per la piccola parte di sviluppo e personalizzazione di script Groovy si è utilizzato Visual Studio Code. \\
 Visual Studio Code\footnote{\url{https://code.visualstudio.com/}}, è un editor open source sviluppato da Microsoft, basato su \textit{Electron}, un framework javascript che permette lo sviluppo di applicazioni desktop.
 La caratteristica chiave di Visual Studio Code consiste in un'ampia gamma di \gls{plugin} ed estensioni, che lo rendono un editor versatile e facilmente adattabile a varie esigenze. Esso inoltre risulta configurabile in modo preciso e dettagliato tramite \gls{json}. 
 
