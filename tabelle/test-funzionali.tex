@@ -1,0 +1,31 @@
+\taburowcolors[2] 2{tableLineOne .. tableLineTwo}
+\tabulinesep = ^3mm_2mm
+\begin{longtabu} to \textwidth {cXXc}
+    \caption[Test Funzionali]{Test Funzionali}
+    \label{tab:test}
+    \endlastfoot
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{tableHeaderBlue}
+    %\hline
+    \textbf{ID} & \textbf{Descrizione} & \textbf{Comportamento atteso} & \textbf{Stato}\\
+    %\hline
+    TF001 & Visualizzazione della pagina principale di Jenkins & La pagina principale di Jenkins viene visualizzata & Riuscito\\ %\hline
+    TF002 & Autenticazione con l'utente admin di default & L'utente admin riesce ad autenticarsi correttamente con le sue credenziali & Riuscito\\ %\hline
+    TF003 & Caricamento dei \gls{project} & Se il container viene rimosso e ne viene creato uno nuovo, con la stessa configurazione i project rimangono & Riuscito\\ %\hline
+    TF004 & Caricamento dei \gls{plugin} & Se il container viene rimosso e ne viene creato uno nuovo, con la stessa configurazione i plugin rimangono & Riuscito\\ %\hline
+    \newpage
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{tableHeaderBlue}
+    %\hline
+    \textbf{ID} & \textbf{Descrizione} & \textbf{Comportamento atteso} & \textbf{Stato}\\
+    TF005 & \gls{build} di applicazioni web Maven & L'applicazione di esempio genera un file ``.\gls{war}'' & Riuscito\\ %\hline
+    TF006 & \gls{build} di immagini docker & L'immagine docker viene costruita correttamente ed è disponibile nell'\gls{host} & Riuscito\\ %\hline
+    TF007 & Esecuzione di \gls{build} distribuite con più \gls{host} & Le \gls{build} vengono eseguite correttamente su entrambi i nodi \gls{host} & Riuscito\\ %\hline
+    TF008 & Esecuzione di \gls{build} su \gls{slave} \gls{sshg} & Le \gls{build} vengono eseguite correttamente su uno \gls{slave} SSH \gls{container} & Riuscito\\ %\hline
+    TF009 & Esecuzione di \gls{build} su \gls{slave} \gls{jnlpg} & Le \gls{build} vengono eseguite correttamente su uno \gls{slave} JNLP \gls{container} & Riuscito\\ %\hline
+    TF010 & Recupero degli artefatti dagli \gls{slave} & Gli artefatti vengono copiati correttamente nel \textit{working space} del nodo \gls{master} & Riuscito\\ %\hline
+    TF011 & Recupero del codice sorgente da un \gls{repository} \gls{cvs} remoto & La \gls{build} riesce a recuperare il codice sorgente dell'applicazione da costruire da un repository CVS remoto & Riuscito\\ %\hline
+    TF012 & Aggiornamento dell'istanza \gls{master} su \gls{container} & L'aggiornamento dell'istanza master avviene correttamente & Riuscito\\ %\hline
+    TF013 & Backup dei dati di Jenkins dal volume del \gls{container} \gls{master}& Viene generato un archivio contenente i dati della home directory di Jenkins & Riuscito\\ %\hline
+    TF014 & Migrazione dei dati di Jenkins su un altro \gls{container} & La home directory di Jenkins viene trasferita su un nuovo container correttamente & Riuscito\\ %\hline
+\end{longtabu}

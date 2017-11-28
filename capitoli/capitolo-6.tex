@@ -8,10 +8,31 @@
 \label{cap:verifica-validazione}
 %**************************************************************
 
+\intro{In questo capitolo vengono riportati i test funzionali eseguiti durante i processi di Verifica e Validazione dell'architettura sviluppata.}
+
 %**************************************************************
 \section{Resoconto attività Testing}
 %**************************************************************
 
+In tabella \hyperref[tab:test]{6.1} vengono riportati i test di verifica eseguiti; tali test costituiscono anche una suite di collaudo del sistema. \\
+
+Ciascun test è descritto da:
+
+\begin{itemize}
+    \item \textbf{ID}. Un codice alfanumerico che identifica univocamente il test;
+    \item \textbf{Descrizione}. Una breve descrizione del test;
+    \item \textbf{Comportamento atteso}. Un breve testo che specifica i risultati attesi, in caso di riuscita del test.
+    \item \textbf{Stato}. Lo stato d'esecuzione del test, esso può essere:
+    \begin{itemize}
+        \item \textbf{Riuscito}. Se il test ha avuto esito positivo;
+        \item \textbf{Fallito}. Se il test ha avuto esito negativo.
+    \end{itemize}
+\end{itemize}
+
+\input{./tabelle/test-funzionali.tex}
+
 %**************************************************************
 \section{Conclusioni}
 %**************************************************************
+
+Tutti i test preventivati hanno riportato esito positivo anche se si evidenziano difficoltà nei test \textit{TF009} e \textit{TF010}. Tali difficoltà sono dovute principalmente a problemi col proxy aziendale.
