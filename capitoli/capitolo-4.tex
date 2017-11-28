@@ -42,7 +42,7 @@ In \hyperref[fig:impl1]{figura 4.1} è illustrata la configurazione iniziale che
 \end{figure}
 
 %**************************************************************
-\subsection{Vantaggi della soluzione individuata}
+\subsection{Vantaggi della soluzione}
 %**************************************************************
 
 Le tecnologie di containerizzazione fornite da Docker sono risultate essere la scelta opportuna per sopperire i limiti dell'architettura esposti in \hyperref[subsec:limiti]{sezione 4.1.1}. I \gls{container} possono essere messi in esecuzione con un solo comando da terminale e non necessitano di grosse configurazioni; forniscono inoltre ogni qualvolta vengano eseguiti, un'ambiente ``nuovo'' (non contaminato da installazioni o configurazioni precedenti) e isolato dal resto del sistema ospite. Ecco quindi che un nodo \gls{host} non dovrà più essere dedicato solamente al ruolo di \gls{slave}, ma quando esso riceverà dei compiti da eseguire dal \gls{master} potrà allocare uno o più \gls{container} che svolgano il lavoro e deallocarli una volta che abbiano raggiunto lo scopo, dedicando nel tempo rimanente risorse ad altre attività.\\
