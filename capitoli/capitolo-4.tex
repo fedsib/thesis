@@ -109,9 +109,17 @@ Nella \hyperref[tab:dim]{tabella 4.1} viene riportato un confronto tra le dimens
 
 \input{./tabelle/dimensioni.tex}
 
-Una volta create le immagini, ho proceduto alla configurazione dei \gls{container} andando a definire un volume\footnote{\url{https://docs.docker.com/engine/admin/volumes/volumes/}} per poter gestire agevolmente la directory principale di Jenkins, in modo da semplificare le operazioni legate all'esercibilità 
+Una volta create le immagini, ho proceduto alla configurazione dei \gls{container} andando a definire un volume\footnote{\url{https://docs.docker.com/engine/admin/volumes/volumes/}} per poter gestire agevolmente la directory principale di Jenkins, in modo da semplificare le operazioni legate all'esercibilità, come descritto nel \hyperref[cap:esercibilità]{quinto capitolo}. Sono inoltre stati definiti e adattati degli script Groovy al fine di automatizzare alcune operazioni di configurazione del Jenkins \gls{master}; infine ho provveduto ad una selezione di \gls{plugin} per la fornitura di \gls{container} e monitoraggio. 
 
-\subsection{Difficoltà riscontrate}
+\subsection{Difficoltà riscontrate e punti di attenzione}
+
+Le principali difficoltà riscontrate riguardano:
+
+\begin{itemize}
+    \item \textbf{Documentazione obsoleta o sparsa}. La documentazione di Jenkins per molti aspetti è letteralmente un ``work in progress'' e quindi per buona parte completamente mancante od obsoleta. Essa non presenta una chiara strutturazione ma è sparsa in più collegamenti di difficile reperimento;
+    \item \textbf{Non univocità nella configurazione di un proxy}. Per accedere alla rete esterna, spesso è comune l'uso di un proxy in ambito aziendale. La sua configurazione è stata un aspetto non banale in quanto è possibile impostarlo in un'unica maniera ma vanno attuate circa sei / sette impostazioni distinte, a livello di sistema operativo, a livello di Docker, delle immagini, dei container;
+    \item \textit{Conflitti di permessi}. Soprattutto nel caso dei backup dei volumi si sono riscontrati comportamenti curiosi e difficilmente interpretabili con la gestione dei permessi dei file in \gls{Linux}. 
+\end{itemize}
 
 %**************************************************************
 \section{Studio sulle modalità di comunicazione master/slave}
