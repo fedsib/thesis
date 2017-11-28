@@ -15,7 +15,7 @@
 
 \subsection{CentOS 7}
 
-\textit{\gls{CentOS} 7 \footnote{\url{https://www.centos.org/}}} è la distribuzione \gls{GNU}/\gls{Linux} di riferimento all'interno di IKS. \gls{CentOS} è una distribuzione di tipo aziendale, basata su \gls{Red Hat} Enterprise \gls{Linux} e si distingue da quest'ultima per la mancanza di supporto tecnico fornito da \gls{Red Hat} e per il cambio di logo.\\
+\gls{CentOS} 7 \footnote{\url{https://www.centos.org/}} è la distribuzione \gls{GNU}/\gls{Linux} di riferimento all'interno di IKS. \gls{CentOS} è una distribuzione di tipo aziendale, basata su \gls{Red Hat} Enterprise \gls{Linux} e si distingue da quest'ultima per la mancanza di supporto tecnico fornito da \gls{Red Hat} e per il cambio di logo.\\
 \gls{CentOS} fa dell'affidabilità e della robustezza i suoi punti cardine, rendendola una delle migliori distribuzioni \gls{GNU}/\gls{Linux} attualmente presenti sul mercato in ambito server.
 
 \begin{figure}[H]
@@ -25,9 +25,11 @@
     \caption{Logo di CentOS 7}
 \end{figure}
 
+\newpage
+
 \subsection{Bash 4.4.5}
 
-\textit{\gls{bash} \footnote{\url{https://www.gnu.org/software/bash/}}} è una shell, cioè un interprete a linea di comando frequentemente presente all'interno di sistemi \gls{Linux}. Essa fornisce un semplice linguaggio di scripting nativo che tramite l'impostazione di variabili, comandi e strutture di controllo del flusso permette di eseguire compiti complessi, favorendone l'automazione.
+\gls{bash} \footnote{\url{https://www.gnu.org/software/bash/}} è una shell, cioè un interprete a linea di comando frequentemente presente all'interno di sistemi \gls{Linux}. Essa fornisce un semplice linguaggio di scripting nativo che tramite l'impostazione di variabili, comandi e strutture di controllo del flusso permette di eseguire compiti complessi, favorendone l'automazione.
 
 \begin{figure}[H]
     \capstart
@@ -38,7 +40,7 @@
 
 \subsection{JDK 8 update 151}
 
-Il \gls{jdk} è una raccolta di strumenti essenziali per la programmazione in linguaggio Java. Esso fornisce, tra le altre una componente per la compilazione del codice sorgente in \gls{bytecode}, un interprete per il \gls{bytecode} generato, uno strumento per la generazione automatica di documentazione a partire da particolari commenti presenti nel codice sorgente, un \textit{\gls{debugger}} e molto altro.
+Il \gls{jdk} è una raccolta di strumenti essenziali per la programmazione in linguaggio Java. Esso fornisce, tra le altre, una componente per la compilazione del codice sorgente, un interprete per il \gls{bytecode} generato dal compilatore, uno strumento per la generazione automatica di documentazione a partire da particolari commenti presenti nel codice sorgente, un \textit{\gls{debugger}} e molto altro.
 
 \begin{figure}[H]
     \capstart
@@ -49,7 +51,7 @@ Il \gls{jdk} è una raccolta di strumenti essenziali per la programmazione in li
 
 \subsection{Apache Tomcat 9.0.1}
 
-\textit{Apache Tomcat \footnote{\url{https://tomcat.apache.org/}}} è un \textit{\gls{application-server}} una piattaforma software per l'esecuzione di applicazioni Web sviluppate in linguaggio Java. Esso permette una facile gestione di applicazioni web, consentendo di definire varie politiche di gestione degli utenti e una dettagliata configurazione di porte e altre impostazioni di rete.
+Apache Tomcat \footnote{\url{https://tomcat.apache.org/}} è un \textit{\gls{application-server}} una piattaforma software per l'esecuzione di applicazioni Web sviluppate in linguaggio Java. Esso permette una facile gestione di applicazioni web, consentendo di definire varie politiche di gestione degli utenti e una dettagliata configurazione di porte e altre impostazioni di rete.
 
 \begin{figure}[H]
     \capstart
@@ -60,11 +62,11 @@ Il \gls{jdk} è una raccolta di strumenti essenziali per la programmazione in li
 
 \subsection{Jenkins 2.73.3}
 
-\textit{Jenkins \footnote{\url{https://jenkins.io/}}} è uno strumento di \gls{integrazione-continua} open source e rappresenta uno dei principali strumenti di automazione di compiti. Esso permette agli utenti, tramite la definizione di \gls{project} (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l'esecuzione dei test e la visualizzazione dei loro risultati e il \gls{deploy} dell'\gls{artefatto} ottenuto verso un \glossary{repository} dei prodotti.\\
+Jenkins \footnote{\url{https://jenkins.io/}} è uno strumento di \gls{integrazione-continua} open source e rappresenta uno dei principali strumenti di automazione di compiti. Esso permette agli utenti, tramite la definizione di \gls{project} (in passato definiti jobs) di automatizzare una serie complessa di compiti, quali ad esempio la compilazione di una componente software a partire dal suo codice sorgente, l'esecuzione dei test e la visualizzazione dei loro risultati e il \gls{deploy} dell'\gls{artefatto} ottenuto verso un \glossary{repository} dei prodotti.\\
 
-Jenkins è facilmente installabile e configurabile ed è funzionante ``out of the box'' senza particolari impostazioni; presenta un ricco ecosistema di \gls{plugin} messi a disposizione dalla community di sviluppatori ed è estensibile, sempre tramite \gls{plugin}, qualora le funzionalità desiderate non fossero già disponibili.\\
+Jenkins è facilmente installabile e configurabile ed è funzionante ``out of the box'' senza particolari impostazioni; presenta un ricco ecosistema di \gls{plugin} messi a disposizione dalla comunità ed è estensibile, tramite questi ultimi, qualora le funzionalità desiderate non fossero già disponibili.\\
 
-Jenkins si basa su un'architettura \gls{master} - \gls{slave}, dove un'istanza principale (il \gls{master}) coordina i vari compiti tra uno o più \gls{slave}, i quali rappresentano dei meri esecutori dei compiti a loro assegnati.
+Jenkins si basa su un'architettura \gls{master} - \gls{slave}, dove un'istanza principale (il \gls{master}) coordina i vari compiti tra uno o più \gls{slave}, i quali rappresentano dei meri esecutori dei lavori a loro assegnati.
 
 \begin{figure}[H]
     \capstart
@@ -75,11 +77,11 @@ Jenkins si basa su un'architettura \gls{master} - \gls{slave}, dove un'istanza p
 
 \subsection{Docker 17.10 Community Edition}
 
-\textit{Docker \footnote{\url{https://www.docker.com/}}} è un progetto open source che consente la creazione, l'istanziazione e l'esecuzione di processi isolati, definiti \gls{container} in un sistema ospite. \\
+Docker \footnote{\url{https://www.docker.com/}} è un progetto open source che consente la creazione, l'istanziazione e l'esecuzione di processi isolati, definiti \gls{container} in un sistema ospite. \\
 
 L'idea alla base di Docker è la containerizzazione, una particolare forma di virtualizzazione che basandosi sui \textit{cgroups}, una funzionalità del kernel \gls{Linux} che rappresenta dei gruppi di controllo in grado di offrire applicazioni complete viste come risorse isolate, senza che sia necessario istanziare delle macchine virtuali pienamente operative. \\
 
-Possiamo immaginare un container in ambito informatico, come la sua controparte legata ai trasporti fisici di merci. In un container che siamo abituati a vedere trasportato da un treno o stivato in una nave la merce viene racchiusa al suo interno e spedita in luoghi specifici. Il concetto si ritrova in campo informatico, dove in un container è possibile includere un'applicazione software con tutte le sue dipendenze e con le utilità necessarie al suo corretto funzionamento, in modo isolato dal resto del sistema. 
+Possiamo immaginare un container in ambito informatico, come la sua controparte legata ai trasporti fisici di merci. In un container che siamo abituati a vedere trasportato da un treno o stivato in una nave, la merce viene racchiusa al suo interno e spedita in luoghi specifici. Il concetto si ritrova in campo informatico, dove in un container è possibile includere un'applicazione software con tutte le sue dipendenze e con le utilità necessarie al suo corretto funzionamento, in modo isolato dal resto del sistema. 
 
 Questo permette di avere applicazioni portabili indipendentemente dal sistema operativo sul quale andranno in esecuzione, un uso efficiente delle risorse di sistema, la scalabilità delle applicazioni e la garanzia che ogni \gls{container} sarà un processo isolato dagli altri \gls{container} e dal sistema ospite stesso, consentendo quindi ogni volta che viene mandato in esecuzione d'avere un ambiente ``pulito'', con le caratteristiche desiderate. 
 
@@ -92,7 +94,7 @@ Questo permette di avere applicazioni portabili indipendentemente dal sistema op
 
 \subsection{Apache Maven 3.5.2}
 
-\textit{Apache Maven \footnote{\url{https://maven.apache.org/}}} è uno strumento di automazione delle \gls{build}, usato principalmente per progetti \textit{Java}. Grazie a Maven, è possibile gestire le dipendenze di un determinato progetto e definirne particolari aspetti, quali ad esempio le politiche di \textit{\gls{deploy}} e molto altro. \\
+Apache Maven \footnote{\url{https://maven.apache.org/}} è uno strumento di automazione delle \gls{build}, usato principalmente per progetti \textit{Java}. Grazie a Maven, è possibile gestire le dipendenze di un determinato progetto e definirne particolari aspetti, quali ad esempio le politiche di \textit{\gls{deploy}} e molto altro. \\
 
 \begin{figure}[H]
     \capstart
@@ -107,12 +109,12 @@ Concetto fondamentale di Maven è il \textit{\gls{pom}\footnote{\url{https://mav
     \capstart
     \centering
     \includegraphics[keepaspectratio]{../immagini/maven-directory.png}
-    \caption{Struttura di un progetto Maven,così come definita da un generico POM, immagine tratta da \url{http://www.murraywilliams.com/2012/04/maven-and-jpa-programming/}}
+    \caption{Struttura di un progetto Maven, così come definita da un generico POM, immagine tratta da \url{http://www.murraywilliams.com/2012/04/maven-and-jpa-programming/}}
 \end{figure}
 
 \subsection{cadvisor 0.28.2}
 
-\textit{cadvisor \footnote{\url{https://github.com/google/cadvisor}}} è uno strumento sviluppato da Google per il monitoraggio e l'analisi in real-time delle performance e del consumo di risorse di \gls{container}. \\
+cadvisor \footnote{\url{https://github.com/google/cadvisor}} è uno strumento sviluppato da Google per il monitoraggio e l'analisi in real-time delle performance e del consumo di risorse di \gls{container}. \\
 Fornisce inoltre supporto nativo ai \gls{container} Docker.
 
 \begin{figure}[H]
@@ -125,12 +127,11 @@ Fornisce inoltre supporto nativo ai \gls{container} Docker.
 %**************************************************************
 \section{Linguaggi di Programmazione}
 %**************************************************************
-\newpage
 \subsection{Java}
 
 Java è un linguaggio orientato agli oggetti, fortemente tipizzato e focalizzato sull'essere multi-piattaforma. Tale linguaggio grazie alla \gls{jvm} permette una notevole portabilità del codice sorgente, che verrà compilato sotto forma di \gls{bytecode}. \\
 
-Java è inoltre il principale linguaggio col quale vengono sviluppati \gls{plugin} per Jenkins, essendo Jenkins stesso scritto prevalentemente in Java.
+Java è inoltre il principale linguaggio col quale vengono sviluppati \gls{plugin} per Jenkins, essendo esso stesso scritto prevalentemente in tale linguaggio.
 
 \begin{figure}[H]
     \capstart
@@ -139,9 +140,11 @@ Java è inoltre il principale linguaggio col quale vengono sviluppati \gls{plugi
     \caption{Logo Java 8}
 \end{figure}
 
+\newpage
+
 \subsection{Groovy}
 
-\textit{Groovy \footnote{\url{http://groovy-lang.org/}}} è un linguaggio per la piattaforma Java ma indipendente da Java stesso, pur avendo una sintassi molto simile. \`E sviluppato dall'Apache Software Foundation con l'intento di essere facile da imparare, semplice da integrare con librerie e componenti scritte in Java, con funzionalità aggiuntive e un ricco ecosistema di framework a supporto. Può inoltre essere visto come un linguaggio di scripting semplice e maneggevole per la scrittura di test concisi e manutenibili oltre che per l'automazione di vari compiti. 
+Groovy \footnote{\url{http://groovy-lang.org/}} è un linguaggio per la piattaforma Java ma indipendente da esso, pur avendo una sintassi molto simile. \`E sviluppato dall'Apache Software Foundation con l'intento di essere facile da imparare, semplice da integrare con librerie e componenti scritte in Java, con funzionalità aggiuntive e un ricco ecosistema di framework a supporto. Può inoltre essere visto come un linguaggio di scripting semplice e maneggevole per la scrittura di test concisi e manutenibili oltre che per l'automazione di vari compiti. 
 
 \begin{figure}[H]
     \capstart
