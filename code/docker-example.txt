@@ -1,0 +1,16 @@
+ENV CATALINA_HOME /opt/apache-tomcat-9.0.1 
+ENV TOMCAT_MAJOR 9
+ENV TOMCAT_VERSION 9.0.1
+
+RUN wget http://ftp.riken.jp/net/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    rm apache-tomcat*.tar.gz && \
+    mv apache-tomcat* ${CATALINA_HOME}
+ 
+COPY apache-tomcat-${TOMCAT_VERSION}.tar.gz
+
+RUN tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    rm apache-tomcat*.tar.gz && \
+    mv apache-tomcat* ${CATALINA_HOME}
+ 
+ADD apache-tomcat-${TOMCAT_VERSION}.tar.gz /opt

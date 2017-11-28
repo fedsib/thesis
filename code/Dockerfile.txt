@@ -1,0 +1,14 @@
+FROM centos:7
+
+MAINTAINER fedsib <fedsib@hotmail.it>
+
+# Prepare environment
+ENV JAVA_HOME /opt/jdk1.8.0_151
+ENV PATH $PATH:$JAVA_HOME/bin
+ENV JAVA_VERSION 8u151
+ENV JAVA_BUILD 8u151-b12
+
+# Instead of download binaries let's copy them directly in /opt
+ADD jdk-${JAVA_VERSION}-linux-x64.tar.gz /opt
+
+CMD ["echo", "Java up and running"]

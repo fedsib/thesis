@@ -11,25 +11,107 @@
 \intro{In questo capitolo vengono esposte le attività relative alla realizzazione del sistema; dalla fase di analisi e progettazione, all'effettiva implementazione. Viene inoltre riportato uno studio dettagliato dei protocolli e dei metodi di comunicazione tra \gls{master} e \gls{slave} soprattutto riferendosi ad ambienti containerizzati.}\\
 
 %**************************************************************
-\section{Analisi e Progettazione}
+\section{Descrizione generale dell'architettura individuata}
 %**************************************************************
 
+In questa sezione si intende analizzare i limiti dell'architettura attuale e si riportano brevemente i vantaggi della soluzione implementata.
 
+\subsection{Limiti dell'architettura attuale}
+\label{subsec:limiti}
+
+Tipicamente si ha un'istanza \gls{master} di Jenkins ospitata su un server fisico o virtuale, la quale coordina il lavoro e dirige lo svolgimento dello stesso, delegando più compiti a vari nodi \gls{slave}. Ciascuno slave a sua volta, sarà ospitato da un \gls{host} fisico o virtuale, il quale dovrà provvedere le risorse adeguate in termini di memoria, capacità di elaborazione, disponibilità nell'esecuzione dei compiti eccetera. Tale architettura risulta essere poco flessibile e rappresenta un \textit{Single Point of Failure}; qualora il nodo \gls{slave} risulti offline o irraggiungibile per qualche motivo, il nodo \gls{master} non sarà in grado di mandare in esecuzione su di esso alcun \gls{project}. I nodi \gls{slave} inoltre andranno preparati in precedenza, configurando manualmente la macchina \gls{host}, installandovi eventuali dipendenze, quali ad esempio: 
+
+\begin{itemize}
+    \item Strumenti di automazione delle \gls{build} come Maven, Gradle o Ant; 
+    \item Framework specifici per le applicazioni sviluppate;
+    \item Utilità di compilazione e supporto allo sviluppo come il \gls{jdk}.
+\end{itemize}
+
+\`E impensabile dover ripetere manualmente tali operazioni per ogni \gls{host}; senza contare che potrebbe essere necessario avere più utilità, anche in conflitto tra loro (come ad esempio diverse versioni del \gls{jdk}, al fine di garantire la retro compatibilità delle applicazioni sviluppate). Tale architettura è difficilmente manutenibile, troppo rigida e quasi impossibile da adattare alle esigenze; ne consegue che ogni nodo slave una volta configurato sarà adatto solo per determinati tipi di \gls{build}.\\
+
+L'architettura presenta inoltre un uso inefficiente delle risorse. Se l'intera macchina è dedicata univocamente a svolgere il ruolo di \gls{slave}, si troverà ad eseguire i compiti assegnati dal \gls{master} per un certo tempo, ma la maggior parte lo trascorrerà in uno stato di inattività. \\
+
+In \hyperref[fig:impl1]{figura 4.1} è illustrata la configurazione iniziale che ho utilizzato presso IKS per l'attività di formazione e di sperimentazione. Tale infrastruttura rispecchia pienamente i limiti appena descritti, in questo caso il ruolo di \gls{master} viene assunto da un'istanza di Jenkins presente su un portatile con Windows 10, mentre il ruolo di \gls{slave} è ricoperto dalla macchina virtuale \gls{Linux} remota; in questa configurazione, si sono ottenuti come artefatti, sia applicazioni generate da progetti Maven (in formato ``.\gls{war}'') che immagini Docker. Per raggiungere tali risultati è stato necessario installare e configurare nello slave remoto sia Maven che Docker.
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=12cm, keepaspectratio]{../immagini/impl1.png}
+    \caption{Visione d'alto livello dell'architettura iniziale}
+    \label{fig:impl1}
+\end{figure}
 
 %**************************************************************
-\section{Descrizione generale della soluzione individuata}
+\subsection{Vantaggi della soluzione individuata}
 %**************************************************************
+
+Le tecnologie di containerizzazione fornite da Docker sono risultate essere la scelta opportuna per sopperire i limiti dell'architettura esposti in \hyperref[subsec:limiti]{sezione 4.1.1}. I \gls{container} possono essere messi in esecuzione con un solo comando da terminale e non necessitano di grosse configurazioni; forniscono inoltre ogni qualvolta vengano eseguiti, un'ambiente ``nuovo'' (non contaminato da installazioni o configurazioni precedenti) e isolato dal resto del sistema ospite. Ecco quindi che un nodo \gls{host} non dovrà più essere dedicato solamente al ruolo di \gls{slave}, ma quando esso riceverà dei compiti da eseguire dal \gls{master} potrà allocare uno o più \gls{container} che svolgano il lavoro e deallocarli una volta che abbiano raggiunto lo scopo, dedicando nel tempo rimanente risorse ad altre attività.\\
+
+La \hyperref[fig:impl1]{figura 4.2} rappresenta la situazione ideale, con un \gls{master} centrale ospitato su una macchina dedicata, il quale coordina e dirige vari \gls{project} su un numero imprecisato di slave allocati su sua richiesta. Ogni nodo non assumerà più quindi il ruolo di \gls{slave} ma piuttosto quello di fornitore di \gls{slave}, potendone allocare diversi secondo le risorse a sua disposizione. \`E stata implementata, un'architettura ancor più evoluta, dove anche l'istanza \gls{master} di Jenkins è contenuta in un \gls{container}; questo permettere, ad esempio, di poter utilizzare l'intero sistema su una sola macchina, riducendo al minimo la configurazione e le attività di mantenimento dell'infrastruttura.
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=7cm, keepaspectratio]{../immagini/impl5.png}
+    \caption{Rappresentazione di alto livello della soluzione individuata}
+    \label{fig:impl5}
+\end{figure}
+
+%**************************************************************
+\section{Implementazione}
+%**************************************************************
+
+Parte consistente dell'implementazione del sistema è stata la progettazione e la costruzione delle immagini dei \gls{container}. In \hyperref[fig:images]{figura 4.3} è rappresentata la struttura gerarchica delle immagini, così come definite all'interno dei \textit{Dockerfile}.
 
 \begin{figure}[H]
     \capstart
     \centering
     \includegraphics[width=12cm, keepaspectratio]{../immagini/structure.png}
     \caption{Visione astratta della struttura del sistema}
+    \label{fig:images}
 \end{figure}
 
-%**************************************************************
-\section{Implementazione}
-%**************************************************************
+A partire dall'immagine pre-costruita di \gls{CentOS} 7, ho definito una serie di \textit{Dockerfile}, arrivando a definire tutta l'architettura del sistema. Nel listing 4.1 viene riportato il \textit{Dockerfile} dell'immagine di Java 8 update 151, seguito da un breve commento.
+
+\lstinputlisting[language=docker, firstline=1, lastline=14, caption={Esempio di \textit{Dockerfile}}]{./code/dockerfile.txt}  
+
+In riga 1 di Listing 4.1, con il comando ``FROM'', verrà utilizzata l'immagine ufficiale di \gls{CentOS} 7 come base dalla quale derivare. \\
+In riga 3 con il comando ``MAINTAINER'' viene riportato il creatore dell'immagine ed un suo contatto. \\
+Nelle righe 6-9 tramite il comando ``ENV'' vengono definite delle variabili d'ambiente. \\
+In riga 12 l'archivio contenente i binari di installazione di Java viene decompresso nella directory \textit{/opt} con il comando ``ADD''. \\
+Infine, con il comando ``CMD'' viene eseguito un comando \textit{echo} di conferma che l'installazione è andata a buon fine. In questo \textit{Dockerfile} sono definiti otto comandi, quindi l'immagine risultante avrà otto strati.\\
+
+Un'\gls{immagine} consiste in un insieme di strati, ciascuno dei quali porta a delle modifiche del filesystem del \gls{container} che andrà in esecuzione, secondo determinati parametri. Le immagini possono derivare gerarchicamente l'una dall'altra in un modo molto simile all'estensione di classi in un linguaggio di programmazione orientato agli oggetti. \\ 
+
+Per definire un'immagine, occorre riassumere l'insieme di comandi in un \textit{Dockerfile}; semplificando, quando l'immagine verrà costruita con un comando di build, ogni comando del \textit{Dockerfile} diventerà uno strato dell'immagine andando ad aumentarne la dimensione; al fine di ridurre tali dimensioni esistono delle best practice per la stesura dei \textit{Dockerfile}\footnote{\url{https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/}}.
+
+Durante lo stage è stata data particolare attenzione all'ottimizzazione delle immagini, in particolare alla riduzione della loro dimensioni, per meglio comprendere quanto la dimensione possa variare, viene riportato di seguito un confronto tra comandi simili, presi direttamente dal \textit{Dockerfile} dell'immagine di Apache Tomcat 9.0.1.
+
+\lstinputlisting[language=docker, firstline=1, lastline=8, caption={Esempio di comando RUN in un \textit{Dockerfile}}]{./code/docker-example.txt}  
+
+Nelle righe 1-3 di Listing 4.2 vengono definite tramite il comando ``ENV'' 3 variabili d'ambiente con i rispettivi valori. Esse rappresentano, in ordine:
+\begin{itemize}
+    \item il percorso d'installazione di Tomcat;
+    \item la major version di Tomcat;
+    \item la versione specifica di Tomcat.
+\end{itemize} 
+Successivamente in riga 5 con il comando \textit{wget} viene recuperato l'archivio d'installazione di Tomcat dal sito ufficiale; tale archivio viene decompresso con il comando tar e successivamente eliminato ed infine la directory con i file estratti viene trasferita nel percorso d'installazione scelto. Si noti come le quattro operazioni siano incluse in un unico comando ``RUN'' invece che in quattro; questo serve a ridurre il numero di strati (e quindi la dimensione finale) dell'immagine.\\
+
+L'installazione può avvenire anche se disponiamo già dell'archivio senza doverlo scaricare dalla rete (questo può tornare utile in caso la connessione non sia disponibile), nel listing 4.3 viene riportato lo stesso processo di installazione facendo uso del comando ``COPY''; tale comando andrà a copiare l'archivio all'interno del container.
+
+\lstinputlisting[language=docker, firstline=10, lastline=14, caption={Esempio di installazione offline di Tomcat all'interno di un \textit{Dockerfile}}]{./code/docker-example.txt}  
+
+\`E possibile fare ancora meglio, utilizzando il comando ``ADD''. Tale comando è in grado di scompattare direttamente un'archivio ``.tar'' o ``.tar.gz'' in un percorso scelto, favorendo la leggibilità del \textit{Dockerfile} e minimizzando il numero di strati prodotti a uno. Un esempio d'uso di ``ADD'' è riportato nel listing 4.4, in una sola riga l'archivio viene decompresso nella directory \textit{/opt}.
+
+\lstinputlisting[language=docker, firstline=16, lastline=16, caption={Uso del comando ``ADD'' in un \textit{Dockerfile}}]{./code/docker-example.txt}  
+
+Nella \hyperref[tab:dim]{tabella 4.1} viene riportato un confronto tra le dimensioni delle varie immagini utilizzando i diversi tipi di comandi. Il risparmio calcolato in termini di megabyte oscilla tra i 200 e i circa 300 megabyte.
+
+\input{./tabelle/dimensioni.tex}
+
+Una volta create le immagini, ho proceduto alla configurazione dei \gls{container} andando a definire un volume\footnote{\url{https://docs.docker.com/engine/admin/volumes/volumes/}} per poter gestire agevolmente la directory principale di Jenkins, in modo da semplificare le operazioni legate all'esercibilità 
+
+\subsection{Difficoltà riscontrate}
 
 %**************************************************************
 \section{Studio sulle modalità di comunicazione master/slave}

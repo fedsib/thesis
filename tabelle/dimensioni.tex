@@ -1,0 +1,17 @@
+\taburowcolors[2] 2{tableLineOne .. tableLineTwo}
+\tabulinesep = ^3mm_2mm
+\begin{longtabu} to \textwidth {ccc}
+    \caption[Dimensioni delle immagini]{Dimensioni delle immagini}
+    \label{tab:dim}
+    \endlastfoot
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{mymauve}
+    %\hline
+    \textbf{Nome dell'immagine} & \textbf{MB usando RUN} & \textbf{MB usando ADD} \\
+    %\hline
+    java8u151 & 771 & 581\\ %\hline
+    tomcat9.0.1 & 807 & 608\\ %\hline
+    jenkins-master & 926 & 727\\ %\hline
+    jenkins-ssh-slave & 1260 & 955\\ %\hline
+   
+\end{longtabu}
