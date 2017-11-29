@@ -8,7 +8,7 @@
 \label{cap:realizzazione-del-sistema}
 %**************************************************************
 
-\intro{In questo capitolo vengono esposte le attività relative alla realizzazione del sistema; dalla fase di analisi e progettazione, all'effettiva implementazione. Viene inoltre riportato uno studio dettagliato dei protocolli e dei metodi di comunicazione tra \gls{master} e \gls{slave} soprattutto riferendosi ad ambienti containerizzati.}\\
+\intro{In questo capitolo vengono esposte le attività relative alla realizzazione del sistema; dalla fase di analisi e progettazione, all'effettiva implementazione. Viene inoltre riportato una sintesi dello studio dei protocolli e dei metodi di comunicazione tra \gls{master} e \gls{slave} riferito ad ambienti containerizzati.}\\
 
 %**************************************************************
 \section{Descrizione generale dell'architettura individuata}
@@ -123,5 +123,38 @@ Le principali difficoltà riscontrate riguardano:
 \end{itemize}
 
 %**************************************************************
-\section{Studio sulle modalità di comunicazione master/slave}
+\section{Modalità di comunicazione master/slave}
 %**************************************************************
+
+Questa sezione riporta una sintesi dello studio di fattibilità inerente le modalità di comunicazione tra l'istanza \gls{master} di Jenkins e gli \gls{slave} \gls{container} che verranno allocati su richiesta del master. Verranno introdotti brevemente i protocolli utilizzati illustrando il loro funzionamento contestualizzato nel dominio applicativo del progetto. \\
+
+\textit{Yet Another Docker Plugin}\footnote{\url{https://plugins.jenkins.io/yet-another-docker-plugin}}, il \gls{plugin} selezionato per la fornitura e la messa in esecuzione degli slave container, supporta due modalità di comunicazione: \gls{ssh} e \gls{jnlp}.  
+
+\subsection{SSH}
+\label{subsec:ssh}
+
+Il protocollo SSH permette di stabilire connessioni di rete sicure, tramite uno scambio di chiavi cifrate tra un server e un client, come illustrato in \hyperref[fig:ssh-connection]{figura 4.4}.
+
+\begin{figure}[H]
+    \capstart
+    \label{fig:ssh-connection}
+    \captionsetup{justification=centering}
+    \centering
+    \includegraphics[width=9cm, keepaspectratio]{../immagini/ssh-auth.png}
+    \caption[Esempio di creazione della connessione tramite SSH]{Esempio di creazione della connessione tramite SSH, immagine tratta da \\ \url{https://www.ssh.com/ssh/protocol/}}
+\end{figure}
+
+Questo protocollo di rete è risultato essere la via preferibile e la più semplice per stabilire una connessione sicura tra master e slave in quanto Jenkins contiene un'implementazione del client SSH che può essere utilizzata per stabilire connessioni con gli slave in modo semi automatico. \\
+Un generico slave container, dovrà contenere nella directory \textit{\textasciitilde/.ssh/authorized\_keys} la chiave pubblica del master generata in precedenza; per agevolare tale processo l'immagine base ssh da me definita va già a caricare nel container la chiave pubblica, impostando gli opportuni permessi di sicurezza. A questo punto basterà solamente configurare in Jenkins le credenziali, impostando la chiave privata e lo \textit{Yet Another Docker Plugin} svolgerà tutte le operazioni in modo completamente automatizzato.
+
+\subsection{JNLP}
+\label{subsec:jnlp}
+
+\begin{figure}[H]
+    \capstart
+    \label{fig:ssh-connection}
+    \captionsetup{justification=centering}
+    \centering
+    \includegraphics[width=13cm, keepaspectratio]{../immagini/JNLPsd.png}
+    \caption{Diagramma di sequenza della connessione via JNLP}
+\end{figure}
