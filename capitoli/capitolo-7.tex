@@ -17,7 +17,7 @@
 
 Gli obiettivi esposti in \hyperref[sec:ob]{sezione 2.3} e riassunti in \hyperref[tab:obiettivi-iniziali]{tabella 2.1} non anno subito grosse variazioni rispetto quanto inizialmente preventivato. L'obiettivo \textit{O05} relativo allo studio delle modalità di comunicazione tra \gls{master} e \gls{slave}, all'inizio del progetto non era presente e con la sua introduzione si è dovuto ridimensionare l'obiettivo facoltativo \textit{F01} sullo sviluppo d'un \gls{plugin} base. Tale obiettivo facoltativo è stato parzialmente raggiunto anche se non soddisfa pienamente le aspettative aziendali. Non è stato raggiunto l'obiettivo desiderabile \textit{D02} relativo alla stesura di una relazione sui confronti prestazionali tra la piattaforma containerizzata e non, in quanto difficilmente analizzabile in sole otto settimane di stage. Le prestazioni del sistema dipendono da molti parametri (quali ad esempio i limiti imposti ai \gls{container} e le risorse a disposizione dell'\gls{host}). 
 
-Sono stati raggiunti tutti gli obiettivi obbligatori e la quasi totalità di quelli desiderabili. In \hyperref[tab:obiettivi-ginali]{tabella 7.1} vengono riassunti gli obiettivi, riportando per ciascuno lo stato di avanzamento, il quale può essere:
+Sono stati raggiunti tutti gli obiettivi obbligatori e la quasi totalità di quelli desiderabili. In \hyperref[tab:obiettivi-finali]{tabella 7.1} vengono riassunti gli obiettivi, riportando per ciascuno lo stato di avanzamento, il quale può essere:
 
 \begin{itemize}
     \item \textbf{Raggiunto}. Se l'obiettivo soddisfa pienamente le aspettative aziendali;
@@ -27,6 +27,9 @@ Sono stati raggiunti tutti gli obiettivi obbligatori e la quasi totalità di que
 
 \input{./tabelle/obiettiviFinali.tex}
 
+Infine, in \hyperref[tab:resume]{tabella 7.2} viene sintetizzata la percentuale di raggiungimento degli obiettivi in base alla priorità associata, sul totale.
+
+\input{./tabelle/percentuale.tex}
 
 %**************************************************************
 \section{Resoconto dell'analisi dei rischi}
@@ -35,6 +38,27 @@ Sono stati raggiunti tutti gli obiettivi obbligatori e la quasi totalità di que
 %**************************************************************
 \section{Possibili Sviluppi futuri}
 %**************************************************************
+
+In questa sezione vengono evidenziati alcuni possibili sviluppi futuri del sistema implementato.\\
+
+\subsection{Monitoraggio}
+Come visto in \hyperref[sec:monitoring]{sezione 5.1}, cadvisor non permette nativamente la persistenza dei dati raccolti; inoltre sono presenti altri file di log (per esempio i log delle \gls{build} e i log degli \gls{slave} container) che sono sparsi e di difficile lettura. 
+
+Sarebbe interessante valutare un'integrazione con l'infrastruttura ELK (elasticsearch, Logstash e Kibana) già presente in azienda, soprattutto considerato che cadvisor è integrabile con questo stack tecnologico.
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \includegraphics[width=7cm, keepaspectratio]{../immagini/elk.png}
+    \caption{Loghi dello stack ELK}
+\end{figure}
+
+\subsection{Repository prodotti}
+
+Scopo dello stage era l'implementazione di tutto il sistema di \gls{continuous building} ma non è mai stato fatto un vero uso degli artefatti prodotti. Un possibile sviluppo sarebbe integrare la soluzione da me sviluppata con un \gls{repository} prodotti come Nexus Repository Manager\footnote{\url{https://www.sonatype.com/nexus-repository-sonatype}}, già utilizzato con profitto dall'azienda.\\
+
+Anche per le immagini Docker sarebbe utile approfondire l'integrazione del sistema con un \gls{registry} pubblico o privato, cioè con un repository appositamente pensato per la memorizzazione, la gestione e la distribuzione di immagini Docker.
+
 
 %**************************************************************
 \section{Valutazione personale}
