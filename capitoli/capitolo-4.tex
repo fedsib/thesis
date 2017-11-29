@@ -47,7 +47,7 @@ In \hyperref[fig:impl1]{figura 4.1} è illustrata la configurazione iniziale che
 
 Le tecnologie di containerizzazione fornite da Docker sono risultate essere la scelta opportuna per sopperire i limiti dell'architettura esposti in \hyperref[subsec:limiti]{sezione 4.1.1}. I \gls{container} possono essere messi in esecuzione con un solo comando da terminale e non necessitano di grosse configurazioni; forniscono inoltre ogni qualvolta vengano eseguiti, un'ambiente ``nuovo'' (non contaminato da installazioni o configurazioni precedenti) e isolato dal resto del sistema ospite. Ecco quindi che un nodo \gls{host} non dovrà più essere dedicato solamente al ruolo di \gls{slave}, ma quando esso riceverà dei compiti da eseguire dal \gls{master} potrà allocare uno o più \gls{container} che svolgano il lavoro e deallocarli una volta che abbiano raggiunto lo scopo, dedicando nel tempo rimanente risorse ad altre attività.\\
 
-La \hyperref[fig:impl1]{figura 4.2} rappresenta la situazione ideale, con un \gls{master} centrale ospitato su una macchina dedicata, il quale coordina e dirige vari \gls{project} su un numero imprecisato di slave allocati su sua richiesta. Ogni nodo non assumerà più quindi il ruolo di \gls{slave} ma piuttosto quello di fornitore di \gls{slave}, potendone allocare diversi secondo le risorse a sua disposizione. \`E stata implementata, un'architettura ancor più evoluta, dove anche l'istanza \gls{master} di Jenkins è contenuta in un \gls{container}; questo permettere, ad esempio, di poter utilizzare l'intero sistema su una sola macchina, riducendo al minimo la configurazione e le attività di mantenimento dell'infrastruttura.
+La \hyperref[fig:impl5]{figura 4.2} rappresenta la situazione ideale, con un \gls{master} centrale ospitato su una macchina dedicata, il quale coordina e dirige vari \gls{project} su un numero imprecisato di slave allocati su sua richiesta. Ogni nodo non assumerà più quindi il ruolo di \gls{slave} ma piuttosto quello di fornitore di \gls{slave}, potendone allocare diversi secondo le risorse a sua disposizione. \`E stata implementata, un'architettura ancor più evoluta, dove anche l'istanza \gls{master} di Jenkins è contenuta in un \gls{container}; questo permettere, ad esempio, di poter utilizzare l'intero sistema su una sola macchina, riducendo al minimo la configurazione e le attività di mantenimento dell'infrastruttura.
 
 \begin{figure}[H]
     \capstart
@@ -61,8 +61,9 @@ La \hyperref[fig:impl1]{figura 4.2} rappresenta la situazione ideale, con un \gl
 \section{Implementazione}
 %**************************************************************
 
-Parte consistente dell'implementazione del sistema è stata la progettazione e la costruzione delle immagini dei \gls{container}. In \hyperref[fig:images]{figura 4.3} è rappresentata la struttura gerarchica delle immagini, così come definite all'interno dei \textit{Dockerfile}.
+In un primo momento ho proceduto con la configurazione del sistema, come riportato in \hyperref[fig:impl1]{figura 4.1}, in modo da comprenderne il funzionamento e studiarne le peculiarità, questo mi ha permesso di ampliare notevolmente le mie conoscenze nell'ambito di amministrazione di sistema utilizzando varie tecnologie proprie del mondo \gls{Linux}, come ad esempio \gls{systemd}. 
 
+Parte consistente dell'implementazione del sistema è stata la progettazione e la costruzione delle immagini dei \gls{container}. Gli sviluppatori di Jenkins mettono già a disposizione delle immagini sia per i \gls{master} che per gli \gls{slave}, tuttavia l'azienda ha preferito la creazione da zero in modo da avere delle immagini pienamente adatte alle proprie esigenze. In \hyperref[fig:images]{figura 4.3} è rappresentata la struttura gerarchica delle immagini, così come definite all'interno dei \textit{Dockerfile}.
 \begin{figure}[H]
     \capstart
     \centering

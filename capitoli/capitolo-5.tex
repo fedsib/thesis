@@ -8,6 +8,8 @@
 \label{cap:esercibilità}
 %**************************************************************
 
+\intro{Questo capitolo ha lo scopo di approfondire gli aspetti legati all'esercibilità della piattaforma implementata. Verranno quindi esposte le metriche scelte per il monitoraggio e le procedure di upgrade, backup e ripristino individuate.} 
+
 %**************************************************************
 \section{Monitoraggio}
 %**************************************************************
@@ -19,3 +21,16 @@
 %**************************************************************
 \section{Upgrade}
 %**************************************************************
+
+Jenkins ha due linee di sviluppo con diverse tempistiche di rilascio distinte. La prima prevede dei cicli di sviluppo con rilasci settimanali, orientati a fornire nuove funzionalità e bugfix rapidi in modo da permettere alla comunità di essere sempre aggiornata con le ultime novità, mentre la seconda denominata \gls{lts} è orientata alla stabilità, con cicli di sviluppo più lunghi e rilascio ogni 12 settimane ed è pensata soprattutto per l'ambito aziendale\footnote{Il ciclo di sviluppo della versione \gls{lts} è riportato in dettaglio nel sito ufficiale di Jenkin \url{https://jenkins.io/download/lts/}}. \\
+
+Il team di sviluppo di Jenkins rilascia il prodotto in vari formati nativi per una variegata tipologia di distribuzioni \gls{Linux} e per Windows; mette inoltre a disposizione delle immagini per \gls{container} già preconfezionate ed infine eroga il prodotto anche sotto forma di applicazione web, in formato ``.\textit{\gls{war}}''. \\
+
+In ambiente containerizzato, la procedura di aggiornamento di Jenkins utilizzando l'archivio ``.war'' e i volumi di Docker diventa immediata, in dettaglio, basterà associare la directory principale di Jenkins, (da qui in avanti denominata JENKINS\_HOME) ad un volume; successivamente basterà sostituire il
+file "jenkins.war" precedente, con la nuova versione, nella directory dov'è presente il Dockerfile del
+\gls{master} e ricostruire l'\gls{immagine} del \gls{container}.
+
+In seguito, avendo a disposizione un backup, si potrà procedere al ripristino dei dati nel volume. \\
+L'aggiornamento dei \gls{plugin}, avviene nello stesso modo.
+ 
+
