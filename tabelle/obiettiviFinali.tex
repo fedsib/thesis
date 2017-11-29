@@ -1,0 +1,27 @@
+\taburowcolors[2] 2{tableLineOne .. tableLineTwo}
+\tabulinesep = ^3mm_2mm
+\begin{longtabu} to \textwidth {ccXc}
+    \caption[Obiettivi Raggiunti]{Obiettivi Raggiunti}
+    \label{tab:obiettivi-finali}
+    \endlastfoot
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{darkorange}
+    %\hline
+    \textbf{ID} & \textbf{Priorità} & \textbf{Descrizione} & Stato \\
+    %\hline
+    O01 & Obbligatorio & Progettazione dell’architettura di un sistema di \gls{continuous building} & Raggiunto \\ %\hline
+    O02 & Obbligatorio & Implementazione dell’architettura progettata su sistemi IKS & Raggiunto \\ %\hline
+    O03 & Obbligatorio & Stesura manuale di installazione & Raggiunto \\ %\hline
+    \newpage
+    \rowfont{\bfseries\sffamily\leavevmode\color{white}}
+    \rowcolor{darkorange}
+    \textbf{ID} & \textbf{Priorità} & \textbf{Descrizione} & Stato \\
+    O04 & Obbligatorio & Utilizzo della piattaforma implementata per la produzione di \gls{container} Docker & Raggiunto \\ %\hline
+    O05 & Obbligatorio & Studio di fattibilità sulle modalità di comunicazione master e slave & Raggiunto \\ %\hline
+    D01 & Desiderabile & Containerizzazione della piattaforma implementata & Raggiunto\\ %\hline
+    D02 & Desiderabile & Relazione sui confronti prestazionali tra la piattaforma e la sua controparte containerizzata & Non Raggiunto\\ %\hline
+    DO3 & Desiderabile & Individuazione metriche per il monitoraggio della piattaforma & Raggiunto \\ %\hline
+    DO4 & Desiderabile &  Individuazione procedure per il monitoraggio, backup, ripristino e upgrade dell’infrastruttura & Raggiunto\\ %\hline
+    DO5 & Desiderabile & Breve relazione che documenti metriche e procedure dei punti DO3-4 & Raggiunto\\ %\hline
+    F01 & Facoltativo & Implementazione di un plugin base per Jenkins & Parzialmente Raggiunto\\ %\hline
+\end{longtabu}
