@@ -188,7 +188,21 @@
     comment=[l]{\#},
     numbers=left,
     stepnumber=1,
-    commentstyle=\color{purple}\ttfamily,
+    commentstyle=\color{mygreen}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
+\lstdefinelanguage{docker-shell}{
+    keywords={docker, cp, sudo, rm, tar, run, build, volume, network, inspect},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{\#},
+    numbers=left,
+    stepnumber=1,
+    commentstyle=\color{mygreen}\ttfamily,
     stringstyle=\color{red}\ttfamily,
     morestring=[b]',
     morestring=[b]"

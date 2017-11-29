@@ -8,29 +8,85 @@
 \label{cap:esercibilità}
 %**************************************************************
 
-\intro{Questo capitolo ha lo scopo di approfondire gli aspetti legati all'esercibilità della piattaforma implementata. Verranno quindi esposte le metriche scelte per il monitoraggio e le procedure di upgrade, backup e ripristino individuate.} 
+\intro{Questo capitolo ha lo scopo di approfondire gli aspetti legati all'esercibilità della piattaforma implementata. Verranno quindi elencati i plugin scelti per Jenkins e le procedure di monitoraggio, upgrade, backup e ripristino individuate.} 
 
 %**************************************************************
 \section{Monitoraggio}
 %**************************************************************
 
+Il monitoraggio costituisce un'attività essenziale nel valutare le performance del sistema, prevenirne i guasti ed attuare tempestivamente le necessarie misure correttive. Nell'architettura individuata le macro aree da monitorare sono essenzialmente due: i \gls{container} e il sistema containerizzato (Jenkins). \\
+Per i \gls{container} in esecuzione è interessante conoscere le risorse utilizzate, quali ad esempio: la quantità di memoria, la percentuale di utilizzo del processore e l'uso della rete e come questi parametri cambino in base alle attività del sistema containerizzato. Lo strumento che ho reputato più adatto a tale scopo è \hyperref[subsec:cadvisor]{cadvisor} di Google, il quale permette un monitoraggio, tramite grafici e statistiche in real-time di tutti questi aspetti, purtroppo non gestisce direttamente la persistenza dei log e dei dati raccolti, ma è integrabile con altri strumenti dedicati\footnote{Una panoramica di tali strumenti è reperibile nella documentazione del repository di cadvisor, al link: \url{https://github.com/google/cadvisor/blob/master/docs/storage/README.md}}. 
+
+\begin{figure}[H]
+    \capstart
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=12cm, keepaspectratio]{../immagini/memory.png}
+    \caption[Uso della memoria da parte di un container Jenkins \gls{master}]{Uso della memoria da parte di un container Jenkins \gls{master}, si noti il decadimento dovuto alla conclusione di un \gls{project}}
+\end{figure}
+ 
+Per il monitoraggio di Jenkins esistono già svariate soluzioni tramite \gls{plugin} o l'adozione di strumenti specifici, quali ad esempio Datadog\footnote{https://www.datadoghq.com/}. Datadog sarebbe stata la mia prima scelta, vista la completezza dei dati raccolti e l'agevole visualizzazione degli stessi in comode e dettagliate \textit{dashboard}, tuttavia è un software a pagamento (disponibile gratuitamente per un periodo di prova di soli 14 giorni). Ho quindi ripiegato sulla selezione di \gls{plugin} per Jenkins.
+
+\subsection{Scelta dei plugin per Jenkins}
+\label{subsec:scelta-plugin}
+
+Dopo aver valutato diverse opzioni, la scelta è ricaduta su quattro \gls{plugin}, nello specifico:
+
+\begin{itemize}
+    \item \textbf{Metrics Plugin\footnote{\url{https://wiki.jenkins.io/display/JENKINS/Metrics+Plugin}}}. Espone varie \gls{apig}, tramite \gls{json} in modo da poterle poi riusare
+    con altri sistemi. Particolarmente significative sono le metriche sullo stato dei \gls{plugin}
+    caricati, sul tempo impiegato dai \gls{project}, sullo stato delle \gls{build} e sul numero di build eseguite con successo o fallite per project;
+    \item \textbf{Monitoring Plugin\footnote{\url{https://wiki.jenkins.io/display/JENKINS/Monitoring}}}.Permette di monitorare tramite
+    JavaMelody\footnote{Libreria per il monitoraggio di applicazioni \gls{Java EE} \url{https://github.com/javamelody/javamelody/}} vari aspetti di Jenkins tra cui
+    sicurezza, tempo di attività dei nodi, uso della rete e molto altro. Permette inoltre di generare dei diagrammi inerenti il consumo di risorse (CPU, Memoria usata, tempo d'esecuzione delle build) visualizzandoli in delle \textit{dashboard}. Tali diagrammi sono esportabili in formato ``.\textit{pdf}'';
+    \item \textbf{Disk Usage Plugin\footnote{\url{https://plugins.jenkins.io/disk-usage}}}. Crea dei diagrammi e dei report sull'uso della memoria di massa da parte dei singoli \gls{project};
+    \item \textbf{Plugin Usage Plugin\footnote{\url{https://wiki.jenkins.io/pages/viewpage.action?pageId=73532011}}}. Mostra in una tabella l'utilizzo dei vari \gls{plugin} di Jenkins, da parte dei vari \gls{project}.
+\end{itemize}
+
+
 %**************************************************************
 \section{Backup e Ripristino}
 %**************************************************************
+
+Le procedure di backup e ripristino individuate fanno ampio uso del comando \textit{docker cp}\footnote{\url{https://docs.docker.com/engine/reference/commandline/cp/}}. Tale comando permette di copiare file da un \gls{container} verso l'\gls{host} che lo ospita e viceversa. L'uso dei seguenti comandi potrebbe essere integrato in uno script al fine di automatizzare l'intera attività.
+
+\lstinputlisting[language=docker-shell, firstline=18, lastline=20, caption={Sintassi del comando \textit{docker cp} per la creazione di un backup}]{./code/docker-example.txt}  
+
+Nel listing 5.1 è evidenziata la sintassi del comando \textit{docker cp} per copiare la directory principale di Jenkins dal \gls{container} in un determinato percorso del sistema ospite. \\ 
+
+Nel listing 5.2 è invece riportato un esempio completo di backup, salvato in un archivio. Il comando ``\textit{tar}'', con le opzioni \textit{zcvf} permette di:
+\begin{itemize}
+    \item \textbf{-z}. Comprimere l'archivio usando gzip (solitamente incluso nelle distribuzioni \gls{Linux});
+    \item \textbf{-c}. Creare l'archivio;
+    \item \textbf{-v}. Mostrare a video i progressi (ed eventuali errori), durante la creazione dell'archivio;
+    \item \textbf{-f}. Definire il nome dell'archivio, in questo caso sarà \textit{jenkins-home-AAAAMMDD}, dove
+    AAAAMMDD è una nomenclatura rappresentante la data, secondo la seguente convenzione:
+    \begin{itemize}
+        \item \textbf{AAAA}: Quattro cifre per identificare l'anno;
+        \item \textbf{MM}: Due cifre per specificare il mese;
+        \item \textbf{GG}: Due cifre per identificare il giorno.
+    \end{itemize}
+\end{itemize}
+
+\lstinputlisting[language=docker-shell, firstline=22, lastline=28, caption={Esempio completo della creazione di un backup}]{./code/docker-example.txt}  
+
+\lstinputlisting[language=docker-shell, firstline=30, lastline=33, caption={Sintassi del comando \textit{docker cp} per il ripristino}]{./code/docker-example.txt}  
+
+Il procedimento di ripristino seguirà la strada inversa, riportando i dati dal sistema dov'è memorizzato il backup verso il \gls{container}, come evidenziato nel listing 5.3 e tramite un esempio concreto nel listing 5.4 (ipotizzando che la directory principale di Jenkins sia localizzata nel percorso \textit{/opt/datatools/jenkins}).\\ 
+
+\lstinputlisting[language=docker-shell, firstline=35, lastline=37, caption={Sintassi del comando \textit{docker cp} per il ripristino}]{./code/docker-example.txt}  
 
 %**************************************************************
 \section{Upgrade}
 %**************************************************************
 
-Jenkins ha due linee di sviluppo con diverse tempistiche di rilascio distinte. La prima prevede dei cicli di sviluppo con rilasci settimanali, orientati a fornire nuove funzionalità e bugfix rapidi in modo da permettere alla comunità di essere sempre aggiornata con le ultime novità, mentre la seconda denominata \gls{lts} è orientata alla stabilità, con cicli di sviluppo più lunghi e rilascio ogni 12 settimane ed è pensata soprattutto per l'ambito aziendale\footnote{Il ciclo di sviluppo della versione \gls{lts} è riportato in dettaglio nel sito ufficiale di Jenkin \url{https://jenkins.io/download/lts/}}. \\
+Jenkins ha due linee di sviluppo con distinte tempistiche di rilascio. La prima prevede dei cicli di sviluppo con rilasci settimanali, orientati a fornire nuove funzionalità e \textit{bugfix} rapidi in modo da permettere alla comunità di essere sempre aggiornata con le ultime novità, mentre la seconda denominata \gls{lts} è orientata alla stabilità, con cicli di sviluppo più lunghi e rilascio ogni 12 settimane ed è pensata soprattutto per l'ambito aziendale\footnote{Il ciclo di sviluppo della versione \gls{lts} è riportato in dettaglio nel sito ufficiale di Jenkin \url{https://jenkins.io/download/lts/}}. \\
 
 Il team di sviluppo di Jenkins rilascia il prodotto in vari formati nativi per una variegata tipologia di distribuzioni \gls{Linux} e per Windows; mette inoltre a disposizione delle immagini per \gls{container} già preconfezionate ed infine eroga il prodotto anche sotto forma di applicazione web, in formato ``.\textit{\gls{war}}''. \\
 
-In ambiente containerizzato, la procedura di aggiornamento di Jenkins utilizzando l'archivio ``.war'' e i volumi di Docker diventa immediata, in dettaglio, basterà associare la directory principale di Jenkins, (da qui in avanti denominata JENKINS\_HOME) ad un volume; successivamente basterà sostituire il
+In ambiente containerizzato, la procedura di aggiornamento di Jenkins utilizzando l'archivio ``.\textit{\gls{war}}'' e i volumi di Docker diventa immediata, in dettaglio, basterà associare la directory principale di Jenkins, (da qui in avanti denominata \textit{JENKINS\_HOME}) ad un volume; successivamente basterà sostituire il
 file "jenkins.war" precedente, con la nuova versione, nella directory dov'è presente il Dockerfile del
 \gls{master} e ricostruire l'\gls{immagine} del \gls{container}.
 
 In seguito, avendo a disposizione un backup, si potrà procedere al ripristino dei dati nel volume. \\
 L'aggiornamento dei \gls{plugin}, avviene nello stesso modo.
- 
-

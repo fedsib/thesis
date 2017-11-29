@@ -14,3 +14,24 @@ RUN tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     mv apache-tomcat* ${CATALINA_HOME}
  
 ADD apache-tomcat-${TOMCAT_VERSION}.tar.gz /opt
+
+# Comando per il backup
+
+docker cp nome-container:${JENKINS_HOME} /pathAssoluto_directory_di_salvataggio/jenkins
+
+# Esempio backup 
+docker cp jenkins-master:/opt/datatools/jenkins/ /home/jenkins/backup20171110/jenkins/
+
+# Esempio generazione archivio
+
+tar -zcvf jenkins-home-AAAAMMDD.tar.gz /path_directory_di_salvataggio/jenkins &&
+sudo rm -rf /home/jenkins/backup20171110/jenkins/
+
+# Comando per il ripristino
+
+docker cp /pathAssoluto_del_backup_decompresso/jenkins/ nome-container-
+master:/path_alla_directory_padre_della_directory_principale_di_jenkins
+
+# Esempio di ripristino dei dati nel volume del container
+
+docker cp /home/jenkins/backup20171110/jenkins/ jenkins-master:/opt/datatools
