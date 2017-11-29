@@ -150,11 +150,32 @@ Un generico slave container, dovrà contenere nella directory \textit{\textascii
 \subsection{JNLP}
 \label{subsec:jnlp}
 
+\begin{shadequote}
+    The Java Network Launch Protocol (\gls{jnlp}) enables an application to be launched on a client desktop by using resources that are hosted on a remote web server..\par\emph{Oracle about JNLP\footnote{\url{https://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/jnlp.html}}}
+\end{shadequote}
+
+Il protocollo \gls{jnlp}, tramite dei descrittori in \gls{xml} specifica le risorse da recuperare e le modalità di esecuzione di applicazioni \gls{jws}, un particolare \textit{framework} Java che permette agli utenti di avviare applicazioni dalla rete direttamente tramite un \textit{browser}. \\
+JNLP permette di scaricare localmente tutte le risorse di un'applicazione in modo da eseguirla rapidamente, andando a verificare periodicamente la presenza di aggiornamenti. \\
+Fino a luglio 2017, \textit{Yet Another Docker Plugin} non forniva pieno supporto a tale protocollo.
+All'interno dell'architettura implementata JNLP si è rivelato particolarmente difficile da configurare, a causa dei limiti imposti dal proxy aziendale; per sfruttare appieno questo protocollo si deve infatti configurare opportunamente il proxy in più punti:
+
+\begin{itemize}
+    \item A livello di sistema operativo della macchina \gls{host};
+    \item Nel \gls{demone} Docker;
+    \item All'interno del \gls{container} master;
+    \item All'interno del container slave;
+    \item Nelle opzioni di Java, passate tramite comando tramite la variabile JAVA\_OPTS.
+\end{itemize}
+
+Tutte queste impostazioni sono difficilmente automatizzabili soprattutto confrontandole con il protocollo \gls{ssh} descritto in \hyperref[subsec:ssh]{sezione 4.3.1}.
+
 \begin{figure}[H]
     \capstart
-    \label{fig:ssh-connection}
+    \label{fig:jnlp-connection}
     \captionsetup{justification=centering}
     \centering
     \includegraphics[width=13cm, keepaspectratio]{../immagini/JNLPsd.png}
     \caption{Diagramma di sequenza della connessione via JNLP}
 \end{figure}
+
+In \hyperref[fig:jnlp-connection]{figura 4.5}, tramite un diagramma di sequenza \gls{umlg} viene rappresentata la procedura di connessione tra master e slave. Il processo è completamente automatizzabile e a carico del \textit{Yet Another Docker Plugin} ma non è detto che questo vada a buon fine, in quanto il \textit{download} dei ``.\gls{jar}'' potrebbe essere bloccato dal proxy, se presente.  
