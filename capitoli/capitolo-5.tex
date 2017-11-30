@@ -34,14 +34,14 @@ Per il monitoraggio di Jenkins esistono già svariate soluzioni tramite \gls{plu
 Dopo aver valutato diverse opzioni, la scelta è ricaduta su quattro \gls{plugin}, nello specifico:
 
 \begin{itemize}
-    \item \textbf{Metrics Plugin\footnote{\url{https://wiki.jenkins.io/display/JENKINS/Metrics+Plugin}}}. Espone varie \gls{apig}, tramite \gls{json} in modo da poterle poi riusare
+    \item \textbf{Metrics Plugin\cite{site:metrics-plugin}}. Espone varie \gls{apig}, tramite \gls{json} in modo da poterle poi riusare
     con altri sistemi. Particolarmente significative sono le metriche sullo stato dei \gls{plugin}
     caricati, sul tempo impiegato dai \gls{project}, sullo stato delle \gls{build} e sul numero di build eseguite con successo o fallite per project;
-    \item \textbf{Monitoring Plugin\footnote{\url{https://wiki.jenkins.io/display/JENKINS/Monitoring}}}.Permette di monitorare tramite
+    \item \textbf{Monitoring Plugin\cite{site:monitoring-plugin}}.Permette di monitorare tramite
     JavaMelody\footnote{Libreria per il monitoraggio di applicazioni \gls{Java EE} \url{https://github.com/javamelody/javamelody/}} vari aspetti di Jenkins tra cui
     sicurezza, tempo di attività dei nodi, uso della rete e molto altro. Permette inoltre di generare dei diagrammi inerenti il consumo di risorse (CPU, Memoria usata, tempo d'esecuzione delle build) visualizzandoli in delle \textit{dashboard}. Tali diagrammi sono esportabili in formato ``.\textit{pdf}'';
-    \item \textbf{Disk Usage Plugin\footnote{\url{https://plugins.jenkins.io/disk-usage}}}. Crea dei diagrammi e dei report sull'uso della memoria di massa da parte dei singoli \gls{project};
-    \item \textbf{Plugin Usage Plugin\footnote{\url{https://wiki.jenkins.io/pages/viewpage.action?pageId=73532011}}}. Mostra in una tabella l'utilizzo dei vari \gls{plugin} di Jenkins, da parte dei vari \gls{project}.
+    \item \textbf{Disk Usage Plugin\cite{site:disk-usage-plugin}}. Crea dei diagrammi e dei report sull'uso della memoria di massa da parte dei singoli \gls{project};
+    \item \textbf{Plugin Usage Plugin\cite{site:plugin-usage-plugin}}. Mostra in una tabella l'utilizzo dei vari \gls{plugin} di Jenkins, da parte dei vari \gls{project}.
 \end{itemize}
 
 
@@ -49,7 +49,7 @@ Dopo aver valutato diverse opzioni, la scelta è ricaduta su quattro \gls{plugin
 \section{Backup e Ripristino}
 %**************************************************************
 
-Le procedure di backup e ripristino individuate fanno ampio uso del comando \textit{docker cp}\footnote{\url{https://docs.docker.com/engine/reference/commandline/cp/}}. Tale comando permette di copiare file da un \gls{container} verso l'\gls{host} che lo ospita e viceversa. L'uso dei seguenti comandi potrebbe essere integrato in uno script al fine di automatizzare l'intera attività.
+Le procedure di backup e ripristino individuate fanno ampio uso del comando \textit{docker cp}\cite{site:docker-command-for-cli}. Tale comando permette di copiare file da un \gls{container} verso l'\gls{host} che lo ospita e viceversa. L'uso dei seguenti comandi potrebbe essere integrato in uno script al fine di automatizzare l'intera attività.
 
 \lstinputlisting[language=docker-shell, firstline=18, lastline=20, caption={Sintassi del comando \textit{docker cp} per la creazione di un backup}]{./code/docker-example.txt}  
 
