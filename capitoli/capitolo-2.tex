@@ -15,7 +15,7 @@ Viene inoltre riportata un'analisi preventiva dei possibili rischi e viene espos
 \section{Introduzione al progetto}
 %**************************************************************
 
-Riprendendo il contesto definito nella sezione ``{\hyperref[sec:idea]{1.3 - L'idea}}'', occorre definire in modo più approfondito e dettagliato la metodologia di sviluppo \textit{Devops}; abbiamo visto come tale metodologia di sviluppo si focalizza sul rapido rilascio dei prodotti software e su un automazione spinta dei processi ripetibili. In tutto questo non vi è più una divisione netta e separata tra sviluppatori e l'ambito \textit{operations} ma viene instaurato un clima basato sulla collaborazione e sulla condivisione delle conoscenze. 
+Riprendendo il contesto definito nella sezione ``{\hyperref[sec:idea]{1.3 - L'idea}}'', occorre definire in modo più approfondito e dettagliato la metodologia di sviluppo \textit{Devops}\cite{site:what-is-devops}; abbiamo visto come tale metodologia di sviluppo si focalizza sul rapido rilascio dei prodotti software e su un automazione spinta dei processi ripetibili. In tutto questo non vi è più una divisione netta e separata tra sviluppatori e l'ambito \textit{operations} ma viene instaurato un clima basato sulla collaborazione e sulla condivisione delle conoscenze. 
 
 \begin{figure}[H]
     \capstart
@@ -199,7 +199,7 @@ Jenkins, con la sua architettura a \gls{plugin} ben si presta ad una composizion
 \subsection{Gestione di progetto}
 
 \subsubsection{Versionamento}
-Inizialmente da quanto preventivato, per il versionamento del codice sorgente di alcune applicazioni Maven d'esempio non è stato possibile utilizzare \textit{git}. L'azienda ha però fornito un \gls{repository} \gls{cvs}\footnote{\url{https://savannah.nongnu.org/project/memberlist.php?detailed=1&group=cvs}} che è stato utilizzato principalmente per lo storage e il versionamento di applicazioni Maven e dei \textit{Dockerfile} creati. \\
+Inizialmente da quanto preventivato, per il versionamento del codice sorgente di alcune applicazioni Maven d'esempio\cite{site:maven-getiting-started-guide} non è stato possibile utilizzare \textit{git}. L'azienda ha però fornito un \gls{repository} \gls{cvs}\footnote{\url{https://savannah.nongnu.org/project/memberlist.php?detailed=1&group=cvs}} che è stato utilizzato principalmente per lo storage e il versionamento di applicazioni Maven e dei \textit{Dockerfile} creati. \\
 
 \gls{cvs} è un sistema di versionamento del codice piuttosto vetusto (non presenta nuove versioni dal 2008) ma essendo uno tra i primi strumenti di versionamento, tra l'altro costituito da software libero, è ancora parecchio usato. \\
 Non avendo mai approfondito in dettaglio tale strumento, mi sono avvalso di un client grafico, smartCVS\footnote{\url{https://www.syntevo.com/smartcvs/}}.
@@ -239,4 +239,4 @@ In tabella {\hyperref[tab:rischi]{``2.2 - Analisi dei rischi''}} viene riportata
 
 \input{./tabelle/analisi-rischi-tab.tex}
 
-In {\hyperref[tab:]{tabella 7.3}} è riportato un'attualizzazione dei rischi verificatisi assieme alle misure adottate per la loro risoluzione.
+In {\hyperref[tab:rischi-final]{tabella 7.3}} è riportato un'attualizzazione dei rischi verificatisi assieme alle misure adottate per la loro risoluzione.

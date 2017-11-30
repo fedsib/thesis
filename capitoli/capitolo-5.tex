@@ -8,14 +8,14 @@
 \label{cap:esercibilità}
 %**************************************************************
 
-\intro{Questo capitolo ha lo scopo di approfondire gli aspetti legati all'esercibilità della piattaforma implementata. Verranno quindi elencati i plugin scelti per Jenkins e le procedure di monitoraggio, upgrade, backup e ripristino individuate.} 
+\intro{Questo capitolo ha lo scopo di approfondire gli aspetti legati all'esercibilità della piattaforma implementata. Verranno quindi elencati i plugin scelti per Jenkins e le procedure di monitoraggio, upgrade, backup e ripristino individuate.\cite{site:jenkins-system-administration}} 
 
 %**************************************************************
 \section{Monitoraggio}
 %**************************************************************
 \label{sec:monitoring}
 
-Il monitoraggio costituisce un'attività essenziale nel valutare le performance del sistema, prevenirne i guasti ed attuare tempestivamente le necessarie misure correttive. Nell'architettura individuata le macro aree da monitorare sono essenzialmente due: i \gls{container} e il sistema containerizzato (Jenkins). \\
+Il monitoraggio\cite[Chapter~1]{book:jenkins-cookbook} costituisce un'attività essenziale nel valutare le performance del sistema, prevenirne i guasti ed attuare tempestivamente le necessarie misure correttive. Nell'architettura individuata le macro aree da monitorare sono essenzialmente due: i \gls{container} e il sistema containerizzato (Jenkins). \\
 Per i \gls{container} in esecuzione è interessante conoscere le risorse utilizzate, quali ad esempio: la quantità di memoria, la percentuale di utilizzo del processore e l'uso della rete e come questi parametri cambino in base alle attività del sistema containerizzato. Lo strumento che ho reputato più adatto a tale scopo è \hyperref[subsec:cadvisor]{cadvisor} di Google, il quale permette un monitoraggio, tramite grafici e statistiche in real-time di tutti questi aspetti, purtroppo non gestisce direttamente la persistenza dei log e dei dati raccolti, ma è integrabile con altri strumenti dedicati\footnote{Una panoramica di tali strumenti è reperibile nella documentazione del repository di cadvisor, al link: \url{https://github.com/google/cadvisor/blob/master/docs/storage/README.md}}. 
 
 \begin{figure}[H]

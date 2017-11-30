@@ -63,7 +63,7 @@ La \hyperref[fig:impl5]{figura 4.2} rappresenta la situazione ideale, con un \gl
 
 In un primo momento ho proceduto con la configurazione del sistema, come riportato in \hyperref[fig:impl1]{figura 4.1}, in modo da comprenderne il funzionamento e studiarne le peculiarità, questo mi ha permesso di ampliare notevolmente le mie conoscenze nell'ambito di amministrazione di sistema utilizzando varie tecnologie proprie del mondo \gls{Linux}, come ad esempio \gls{systemd}. 
 
-Parte consistente dell'implementazione del sistema è stata la progettazione e la costruzione delle immagini dei \gls{container}. Gli sviluppatori di Jenkins mettono già a disposizione delle immagini sia per i \gls{master} che per gli \gls{slave}, tuttavia l'azienda ha preferito la creazione da zero in modo da avere delle immagini pienamente adatte alle proprie esigenze. In \hyperref[fig:images]{figura 4.3} è rappresentata la struttura gerarchica delle immagini, così come definite all'interno dei \textit{Dockerfile}.
+Parte consistente dell'implementazione del sistema è stata la progettazione e la costruzione delle immagini dei \gls{container}. Gli sviluppatori di Jenkins mettono già a disposizione delle immagini sia per i \gls{master} che per gli \gls{slave}, tuttavia l'azienda ha preferito la creazione da zero in modo da avere delle immagini pienamente adatte alle proprie esigenze. In \hyperref[fig:images]{figura 4.3} è rappresentata la struttura gerarchica delle immagini, così come definite all'interno dei \textit{Dockerfile}\cite{site:dockerfile-reference}.
 \begin{figure}[H]
     \capstart
     \centering
@@ -84,7 +84,7 @@ Infine, con il comando ``CMD'' viene eseguito un comando \textit{echo} di confer
 
 Un'\gls{immagine} consiste in un insieme di strati, ciascuno dei quali porta a delle modifiche del filesystem del \gls{container} che andrà in esecuzione, secondo determinati parametri. Le immagini possono derivare gerarchicamente l'una dall'altra in un modo molto simile all'estensione di classi in un linguaggio di programmazione orientato agli oggetti. \\ 
 
-Per definire un'immagine, occorre riassumere l'insieme di comandi in un \textit{Dockerfile}; semplificando, quando l'immagine verrà costruita con un comando di build, ogni comando del \textit{Dockerfile} diventerà uno strato dell'immagine andando ad aumentarne la dimensione; al fine di ridurre tali dimensioni esistono delle best practice per la stesura dei \textit{Dockerfile}\footnote{\url{https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/}}.
+Per definire un'immagine, occorre riassumere l'insieme di comandi\cite{site:docker-command-for-cli} in un \textit{Dockerfile}; semplificando, quando l'immagine verrà costruita con un comando di build, ogni comando del \textit{Dockerfile} diventerà uno strato dell'immagine andando ad aumentarne la dimensione; al fine di ridurre tali dimensioni\cite{site:docker-development-best-practice} esistono delle best practice per la stesura dei \textit{Dockerfile}\cite{site:best-practice-for-dockerfile}.
 
 Durante lo stage è stata data particolare attenzione all'ottimizzazione delle immagini, in particolare alla riduzione della loro dimensioni, per meglio comprendere quanto la dimensione possa variare, viene riportato di seguito un confronto tra comandi simili, presi direttamente dal \textit{Dockerfile} dell'immagine di Apache Tomcat 9.0.1.
 
@@ -119,14 +119,14 @@ Le principali difficoltà riscontrate riguardano:
 \begin{itemize}
     \item \textbf{Documentazione obsoleta o sparsa}. La documentazione di Jenkins per molti aspetti è letteralmente un ``work in progress'' e quindi per buona parte completamente mancante od obsoleta. Essa non presenta una chiara strutturazione ma è sparsa in più collegamenti di difficile reperimento;
     \item \textbf{Non univocità nella configurazione di un proxy}. Per accedere alla rete esterna, spesso è comune l'uso di un proxy in ambito aziendale. La sua configurazione è stata un aspetto non banale in quanto è possibile impostarlo in un'unica maniera ma vanno attuate circa sei / sette impostazioni distinte, a livello di sistema operativo, a livello di Docker, delle immagini, dei container;
-    \item \textit{Conflitti di permessi}. Soprattutto nel caso dei backup dei volumi si sono riscontrati comportamenti curiosi e difficilmente interpretabili con la gestione dei permessi dei file in \gls{Linux}. 
+    \item \textit{Conflitti di permessi}\cite{site:understanding-permissions-in-docker}. Soprattutto nel caso dei backup dei volumi\cite{site:understanding-docker-volumes} si sono riscontrati comportamenti curiosi e difficilmente interpretabili con la gestione dei permessi dei file in \gls{Linux}. 
 \end{itemize}
 
 %**************************************************************
 \section{Modalità di comunicazione master/slave}
 %**************************************************************
 
-Questa sezione riporta una sintesi dello studio di fattibilità inerente le modalità di comunicazione tra l'istanza \gls{master} di Jenkins e gli \gls{slave} \gls{container} che verranno allocati su richiesta del master. Verranno introdotti brevemente i protocolli utilizzati illustrando il loro funzionamento contestualizzato nel dominio applicativo del progetto. \\
+Questa sezione riporta una sintesi dello studio di fattibilità inerente le modalità di comunicazione tra l'istanza \gls{master} di Jenkins e gli \gls{slave} \gls{container} che verranno allocati su richiesta del master\cite{site:jenkins-distributed-builds}. Verranno introdotti brevemente i protocolli utilizzati illustrando il loro funzionamento contestualizzato nel dominio applicativo del progetto. \\
 
 \textit{Yet Another Docker Plugin}\footnote{\url{https://plugins.jenkins.io/yet-another-docker-plugin}}, il \gls{plugin} selezionato per la fornitura e la messa in esecuzione degli slave container, supporta due modalità di comunicazione: \gls{ssh} e \gls{jnlp}.  
 
@@ -145,7 +145,7 @@ Il protocollo SSH permette di stabilire connessioni di rete sicure, tramite uno 
 \end{figure}
 
 Questo protocollo di rete è risultato essere la via preferibile e la più semplice per stabilire una connessione sicura tra master e slave in quanto Jenkins contiene un'implementazione del client SSH che può essere utilizzata per stabilire connessioni con gli slave in modo semi automatico. \\
-Un generico slave container, dovrà contenere nella directory \textit{\textasciitilde/.ssh/authorized\_keys} la chiave pubblica del master generata in precedenza; per agevolare tale processo l'immagine base ssh da me definita va già a caricare nel container la chiave pubblica, impostando gli opportuni permessi di sicurezza. A questo punto basterà solamente configurare in Jenkins le credenziali, impostando la chiave privata e lo \textit{Yet Another Docker Plugin} svolgerà tutte le operazioni in modo completamente automatizzato.
+Un generico slave container\cite{site:dockerize-a-ssh-service}, dovrà contenere nella directory \textit{\textasciitilde/.ssh/authorized\_keys} la chiave pubblica del master generata in precedenza; per agevolare tale processo l'immagine base ssh da me definita va già a caricare nel container la chiave pubblica, impostando gli opportuni permessi di sicurezza. A questo punto basterà solamente configurare in Jenkins le credenziali, impostando la chiave privata e lo \textit{Yet Another Docker Plugin} svolgerà tutte le operazioni in modo completamente automatizzato.
 
 \subsection{JNLP}
 \label{subsec:jnlp}
@@ -157,14 +157,15 @@ Un generico slave container, dovrà contenere nella directory \textit{\textascii
 Il protocollo \gls{jnlp}, tramite dei descrittori in \gls{xml} specifica le risorse da recuperare e le modalità di esecuzione di applicazioni \gls{jws}, un particolare \textit{framework} Java che permette agli utenti di avviare applicazioni dalla rete direttamente tramite un \textit{browser}. \\
 JNLP permette di scaricare localmente tutte le risorse di un'applicazione in modo da eseguirla rapidamente, andando a verificare periodicamente la presenza di aggiornamenti. \\
 Fino a luglio 2017, \textit{Yet Another Docker Plugin} non forniva pieno supporto a tale protocollo.
-All'interno dell'architettura implementata JNLP si è rivelato particolarmente difficile da configurare, a causa dei limiti imposti dal proxy aziendale; per sfruttare appieno questo protocollo si deve infatti configurare opportunamente il proxy in più punti:
+All'interno dell'architettura implementata JNLP si è rivelato particolarmente difficile da configurare, a causa dei limiti imposti dal proxy aziendale\cite{site:troubleshoot-jnlp}; per sfruttare appieno questo protocollo si deve infatti configurare opportunamente il proxy in più punti:
 
 \begin{itemize}
     \item A livello di sistema operativo della macchina \gls{host};
     \item Nel \gls{demone} Docker;
     \item All'interno del \gls{container} master;
     \item All'interno del container slave;
-    \item Nelle opzioni di Java, passate tramite comando tramite la variabile JAVA\_OPTS.
+    \item Nelle opzioni di Java, passate tramite comando tramite la variabile JAVA\_OPTS;
+    \item Nel file \textit{settings.xml} di Maven\cite{site:maven-settings-reference}.
 \end{itemize}
 
 Tutte queste impostazioni sono difficilmente automatizzabili soprattutto confrontandole con il protocollo \gls{ssh} descritto in \hyperref[subsec:ssh]{sezione 4.3.1}.

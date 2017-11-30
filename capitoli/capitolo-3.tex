@@ -51,7 +51,7 @@ Il \gls{jdk} è una raccolta di strumenti essenziali per la programmazione in li
 
 \subsection{Apache Tomcat 9.0.1}
 
-Apache Tomcat \footnote{\url{https://tomcat.apache.org/}} è un \textit{\gls{application-server}} una piattaforma software per l'esecuzione di applicazioni Web sviluppate in linguaggio Java. Esso permette una facile gestione di applicazioni web, consentendo di definire varie politiche di gestione degli utenti e una dettagliata configurazione di porte e altre impostazioni di rete.
+Apache Tomcat \footnote{\url{https://tomcat.apache.org/}} è un \textit{\gls{application-server}} una piattaforma software per l'esecuzione di applicazioni Web sviluppate in linguaggio Java\cite{site:tomcat-minimalistic}. Esso permette una facile gestione di applicazioni web, consentendo di definire varie politiche di gestione degli utenti e una dettagliata configurazione di porte e altre impostazioni di rete.
 
 \begin{figure}[H]
     \capstart
@@ -77,7 +77,7 @@ Jenkins si basa su un'architettura \gls{master} - \gls{slave}, dove un'istanza p
 
 \subsection{Docker 17.10 Community Edition}
 
-Docker \footnote{\url{https://www.docker.com/}} è un progetto open source che consente la creazione, l'istanziazione e l'esecuzione di processi isolati, definiti \gls{container} in un sistema ospite. \\
+Docker \footnote{\url{https://www.docker.com/}} è un progetto open source che consente la creazione, l'istanziazione e l'esecuzione di processi isolati, definiti \gls{container}\cite{site:what-is-a-container} in un sistema ospite. \\
 
 L'idea alla base di Docker è la containerizzazione, una particolare forma di virtualizzazione che basandosi sui \textit{cgroups}, una funzionalità del kernel \gls{Linux} che rappresenta dei gruppi di controllo in grado di offrire applicazioni complete viste come risorse isolate, senza che sia necessario istanziare delle macchine virtuali pienamente operative. \\
 
@@ -94,7 +94,7 @@ Questo permette di avere applicazioni portabili indipendentemente dal sistema op
 
 \subsection{Apache Maven 3.5.2}
 
-Apache Maven \footnote{\url{https://maven.apache.org/}} è uno strumento di automazione delle \gls{build}, usato principalmente per progetti \textit{Java}. Grazie a Maven, è possibile gestire le dipendenze di un determinato progetto e definirne particolari aspetti, quali ad esempio le politiche di \textit{\gls{deploy}} e molto altro. \\
+Apache Maven \footnote{\url{https://maven.apache.org/}}\cite[Chapter~1]{book:maven-cookbook} è uno strumento di automazione delle \gls{build}\cite{site:introduction-to-the-build-lifecycle}, usato principalmente per progetti \textit{Java}. Grazie a Maven, è possibile gestire le dipendenze di un determinato progetto e definirne particolari aspetti, quali ad esempio le politiche di \textit{\gls{deploy}} e molto altro. \\
 
 \begin{figure}[H]
     \capstart
@@ -103,7 +103,7 @@ Apache Maven \footnote{\url{https://maven.apache.org/}} è uno strumento di auto
     \caption{Logo Apache Maven 3.5.2}
 \end{figure}
 
-Concetto fondamentale di Maven è il \textit{\gls{pom}\footnote{\url{https://maven.apache.org/pom.html}}}, un particolare file di configurazione, basato su \gls{xml} che descrive il progetto, con le sue dipendenze e la sua configurazione. Ogni progetto Maven dovrà essere dotato di almeno un \gls{pom}, e rispettare la struttura in esso definita.
+Concetto fondamentale di Maven è il \textit{\gls{pom}\footnote{\url{https://maven.apache.org/pom.html}}}\cite[Chapter~9]{book:maven-reference}, un particolare file di configurazione, basato su \gls{xml} che descrive il progetto, con le sue dipendenze e la sua configurazione. Ogni progetto Maven dovrà essere dotato di almeno un \gls{pom}\cite{site:introduction-to-the-pom}, e rispettare la struttura in esso definita.
 
 \begin{figure}[H]
     \capstart
@@ -132,7 +132,7 @@ Fornisce inoltre supporto nativo ai \gls{container} Docker.
 
 Java è un linguaggio orientato agli oggetti, fortemente tipizzato e focalizzato sull'essere multi-piattaforma. Tale linguaggio grazie alla \gls{jvm} permette una notevole portabilità del codice sorgente, che verrà compilato sotto forma di \gls{bytecode}. \\
 
-Java è inoltre il principale linguaggio col quale vengono sviluppati \gls{plugin} per Jenkins, essendo esso stesso scritto prevalentemente in tale linguaggio.
+Java è inoltre il principale linguaggio col quale vengono sviluppati \gls{plugin} per Jenkins\cite[Chapter~7]{jenkins-cookbook}, essendo esso stesso scritto prevalentemente in tale linguaggio.
 
 \begin{figure}[H]
     \capstart
