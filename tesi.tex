@@ -27,20 +27,23 @@
                italian,                 
                ]{book}    
 
-\usepackage[utf8]{inputenc}             % codifica di input; anche [latin1] va bene
-                                        % NOTA BENE! va accordata con le preferenze dell'editor
-
 %**************************************************************
 % Importazione package
 %************************************************************** 
 
 %\usepackage{amsmath,amssymb,amsthm}    % matematica
 
-\usepackage[a4paper,                    % carta A4
+\usepackage[a4paper,        % carta A4
 top=3cm,                    % margine superiore
 bottom=3cm,                 % margine inferiore
 head=30pt                   % altezza degli header
 ]{geometry}                 
+
+\usepackage[T1]{fontenc}                % codifica dei font:
+                                        % NOTA BENE! richiede una distribuzione *completa* di LaTeX
+
+\usepackage[utf8]{inputenc}             % codifica di input; anche [latin1] va bene
+                                        % NOTA BENE! va accordata con le preferenze dell'editor
 
 \usepackage[english, italian]{babel}    % per scrivere in italiano e in inglese;
                                         % l'ultima lingua (l'italiano) risulta predefinita
@@ -64,9 +67,6 @@ head=30pt                   % altezza degli header
 
 \usepackage{lastpage}                   % calcola il numero totale di pagine
 
-\usepackage[T1]{fontenc}                % codifica dei font:
-                                        % NOTA BENE! richiede una distribuzione *completa* di LaTeX
-
 %\usepackage{indentfirst}               % rientra il primo paragrafo di ogni sezione
 
 \usepackage{graphicx}                   % immagini
@@ -78,12 +78,13 @@ head=30pt                   % altezza degli header
 \usepackage{float}                      % abilita l'opzione H nelle figure
 
 \usepackage[binding=5mm]{layaureo}      % margini ottimizzati per l'A4; rilegatura di 5 mm
+\usepackage[justify]{ragged2e}          % sillabazione e giustificazione
 
 \usepackage{listings}                   % codice
 
 \usepackage{microtype}                  % microtipografia
 
-\usepackage{mparhack,relsize}           % finezze tipografiche fixltx2e dopo il 2015 non è più richiesto
+\usepackage{mparhack,relsize}           % finezze tipografiche
 
 \usepackage{nameref}                    % visualizza nome dei riferimenti                                      
 
